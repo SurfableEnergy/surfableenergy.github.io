@@ -22,13 +22,35 @@
   <meta name="msapplication-config" content="/browserconfig.xml">
   <meta name="theme-color" content="#ffffff">
   <title>Surfable — Next Leap in Energy</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <style>
-    @font-face{font-family:'Exo 2';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/exo2/v25/7cHmv4okm-.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-    @font-face{font-family:'Exo 2';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/exo2/v25/7cHmv4okm-.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-    @font-face{font-family:'Exo 2';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/exo2/v25/7cHmv4okm-.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-    @font-face{font-family:'Exo 2';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/exo2/v25/7cHmv4okm-.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+    @font-face{
+      font-family:'Exo 2';
+      font-style:normal;
+      font-weight:300;
+      font-display:swap;
+      src:url(./css/fonts/v25/7cHmv4okm-.woff2) format('woff2');
+    }
+    @font-face{
+      font-family:'Exo 2';
+      font-style:normal;
+      font-weight:400;
+      font-display:swap;
+      src:url(./css/fonts/v25/7cHmv4okm-.woff2) format('woff2');
+    }
+    @font-face{
+      font-family:'Exo 2';
+      font-style:normal;
+      font-weight:600;
+      font-display:swap;
+      src:url(./css/fonts/v25/7cHmv4okm-.woff2) format('woff2');
+    }
+    @font-face{
+      font-family:'Exo 2';
+      font-style:normal;
+      font-weight:700;
+      font-display:swap;
+      src:url(./css/fonts/v25/7cHmv4okm-.woff2) format('woff2');
+    }
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{font-family:'Exo 2',sans-serif;background-color:#000;color:#F4F4F4;line-height:1.7;overflow-x:hidden}
@@ -93,9 +115,7 @@
     </div>
   </footer>
   <script>
-    var email_decode_script = document.createElement("script");
-    email_decode_script.src = "/cdn-cgi/scripts/7d0fa10a/cloudflare-static/email-decode.min.js";
-    document.body.appendChild(email_decode_script);
+    !function(){try{var e="cloudflare@surfable.ca".replace(/@/,"").split("").reverse().join(""),t=document.querySelectorAll("a");for(var n of t)try{var a=n.href.replace(/mailto:/i,"");if(a===e){n.href="mailto:"+e;break}}catch(e){}}catch(e){}}()
   </script>
 </body>
 </html>
