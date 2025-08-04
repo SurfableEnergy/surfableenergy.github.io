@@ -170,3 +170,12 @@ footer p {
       padding-top: 4rem;
   }
 }
+.contact-info a {
+  color: #007BFF; /* Sets the link text to the accent color */
+  text-decoration: none; /* Removes the default underline */
+  transition: color 0.3s ease; /* Adds a subtle transition effect */
+}
+
+.contact-info a:hover {
+  color: #F4F4F4; /* Changes the link text to white on hover */
+}
