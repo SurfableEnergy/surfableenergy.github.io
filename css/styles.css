@@ -1,0 +1,172 @@
+/* --- Google Font Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&display=swap');
+
+/* --- Global Styles & Resets --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Exo 2', sans-serif;
+  background-color: #000000;
+  color: #F4F4F4;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* --- Layout & Section Styling --- */
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  width: 100%;
+}
+
+.container {
+  max-width: 840px;
+  width: 100%;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.section.mid {
+  background-color: #111111;
+}
+
+/* --- Typography --- */
+h1, h3 {
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.accent-color {
+  color: #007BFF;
+}
+
+.subheading {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h3 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+p {
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+/* --- Components --- */
+.logo {
+  height: 24px;
+  max-width: 100%;
+  margin-bottom: 2.5rem;
+}
+
+footer {
+  min-height: auto;
+  padding: 3rem 2rem;
+  color: #888;
+}
+
+/* NEW: Rule for the smaller footer logo */
+.footer-logo {
+  height: 20px;
+  margin-bottom: 1.5rem;
+  opacity: 0.7;
+}
+
+.footer-tagline {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #EEEEEE;
+  margin-bottom: 0.5rem;
+}
+
+footer p {
+  font-size: 0.9rem;
+}
+
+/* --- Accessibility & Animations --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Responsive Design (Mobile First Approach) --- */
+
+/* For Tablets and smaller desktops */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+  }
+
+  .section {
+    padding: 3rem 1.5rem;
+    min-height: auto;
+  }
+  
+  /* MODIFIED: Hero section rules for mobile */
+  .hero {
+      min-height: 80vh;
+      justify-content: flex-start; /* Aligns content to the top */
+      padding-top: 5rem; /* Adds space from the top edge */
+  }
+}
+
+/* For Mobile phones */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2.1rem;
+  }
+  
+  .subheading {
+      font-size: 1.1rem;
+  }
+
+  .logo {
+    height: 20px;
+    margin-bottom: 2rem;
+  }
+  
+  .section {
+      padding: 3rem 1rem;
+  }
+  
+  /* MODIFIED: Ensure top padding is adjusted for small phones too */
+  .hero {
+      padding-top: 4rem;
+  }
+}
