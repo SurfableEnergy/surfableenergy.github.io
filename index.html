@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="title" content="Surfable — Next Leap in Energy">
     <meta name="description" content="Patent-pending graphene–aluminum-ion battery delivering boundless performance in EVs, wearables, and mobile power. Make life surfable.">
     <meta property="og:type" content="website">
@@ -20,66 +20,32 @@
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
     <link rel="manifest" href="./assets/site.webmanifest">
     <meta name="msapplication-config" content="./assets/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
     <title>Surfable — Next Leap in Energy</title>
-    
-    <script defer src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        window.addEventListener('resize', () => {
-            let vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
-        });
-        window.dispatchEvent(new Event('resize'));
-    </script>
-
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Inlined Font-Face rules from Google Fonts with corrected paths */
-        @font-face{
-            font-family:'Exo 2';
-            font-style:normal;
-            font-weight:300;
-            font-display:swap;
-            src:url(./css/fonts/static/Exo2-Light.ttf) format('truetype');
-        }
-        @font-face{
-            font-family:'Exo 2';
-            font-style:normal;
-            font-weight:400;
-            font-display:swap;
-            src:url(./css/fonts/static/Exo2-Regular.ttf) format('truetype');
-        }
-        @font-face{
-            font-family:'Exo 2';
-            font-style:normal;
-            font-weight:600;
-            font-display:swap;
-            src:url(./css/fonts/static/Exo2-SemiBold.ttf) format('truetype');
-        }
-        @font-face{
-            font-family:'Exo 2';
-            font-style:normal;
-            font-weight:700;
-            font-display:swap;
-            src:url(./css/fonts/static/Exo2-Bold.ttf) format('truetype');
-        }
-        /* Critical CSS for layout and styling */
         body {
             font-family: 'Exo 2', sans-serif;
             background-color: #000;
             color: #F4F4F4;
             line-height: 1.7;
             overflow-x: hidden;
-            width: 100%;
-            max-width: 100%;
         }
         .section {
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
             width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            border-bottom: 1px solid #222;
+        }
+        .section:last-of-type {
+            border-bottom: none;
         }
         .section.mid {
             background-color: #111;
@@ -87,6 +53,24 @@
         .container-content {
             max-width: 840px;
             width: 100%;
+        }
+        h1, h2 {
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        h3 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
         }
         .accent-color {
             color: #007BFF;
@@ -104,8 +88,13 @@
             max-width: 100%;
             margin-bottom: 2.5rem;
         }
+        footer {
+            min-height: auto;
+            padding: 3rem 2rem;
+            color: #888;
+        }
         .footer-logo {
-            height: 24px;
+            height: 20px;
             margin-bottom: 1.5rem;
             opacity: 0.7;
         }
@@ -117,7 +106,6 @@
         }
         footer p {
             font-size: .9rem;
-            color: #A0A0A0; /* Adjusted for better contrast */
         }
         .contact-info a {
             color: #007BFF;
@@ -128,61 +116,50 @@
             color: #F4F4F4;
         }
         .nav-link {
-            transition: all 0.3s ease;
-            border-bottom: 2px solid transparent;
+            transition: color .3s ease;
             color: #F4F4F4;
         }
         .nav-link.active {
-            border-bottom-color: #007BFF;
             color: #007BFF;
         }
         .interactive-card {
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
             background-color: #1A1A1A;
             color: #F4F4F4;
+            border: 1px solid #333;
         }
         .interactive-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 15px -3px rgba(0, 123, 255, 0.1), 0 4px 6px -2px rgba(0, 123, 255, 0.07);
         }
-        .chart-container {
-            position: relative;
+        .table-custom {
             width: 100%;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px;
-            max-height: 40vh;
+            margin-top: 2rem;
+            border-collapse: collapse;
+            text-align: left;
         }
-        .bg-yellow-50 { background-color: #222; }
-        .border-yellow-500 { border-color: #007BFF; }
-        .text-stone-700 { color: #F4F4F4; }
-        .text-yellow-800 { color: #007BFF; }
-        .bg-white { background-color: #1A1A1A; color: #F4F4F4; }
-        .text-stone-800 { color: #F4F4F4; }
-        .text-stone-600 { color: #A0A0A0; } /* Adjusted for better contrast */
-        .text-black { color: #F4F4F4; }
-        .bg-yellow-600 { background-color: #007BFF; }
-        .hover\:bg-yellow-700:hover { background-color: #0056B3; }
-        .text-stone-700 { color: #F4F4F4; }
-        .bg-stone-200 { background-color: #333; }
-        .focus\:ring-yellow-500:focus { box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); }
-        .border-red-300 { border-color: #DC2626; }
-        .text-red-600 { color: #EF4444; }
-        .border-green-300 { border-color: #16A34A; }
-        .text-green-600 { color: #22C55E; }
-        .bg-yellow-100 { background-color: #333300; }
-        .text-yellow-800 { color: #FFD700; }
-        .bg-teal-100 { background-color: #003333; }
-        .text-teal-800 { color: #00FFFF; }
-        .bg-rose-100 { background-color: #330000; }
-        .text-rose-800 { color: #FF69B4; }
-        @media (min-width: 768px) { .chart-container { height: 400px; } }
+        .table-custom th, .table-custom td {
+            padding: 1rem;
+            border: 1px solid #333;
+        }
+        .table-custom th {
+            background-color: #1A1A1A;
+            font-weight: 600;
+        }
+        .table-custom td {
+            background-color: #111;
+        }
+        .text-pro {
+            color: #22C55E; /* Green for advantages */
+        }
+        .text-con {
+            color: #EF4444; /* Red for disadvantages */
+        }
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
             h2 { font-size: 2rem; }
-            .section { padding: 3rem 1.5rem; }
-            .hero { min-height: calc(80 * var(--vh)); padding-top: 5rem; }
+            .section { padding: 4rem 1.5rem; }
+            .hero { min-height: 80vh; justify-content: flex-start; padding-top: 5rem; }
         }
         @media (max-width: 480px) {
             h1 { font-size: 2.1rem; }
@@ -197,13 +174,13 @@
 
     <svg style="display:none;">
         <defs>
-        <symbol id="surfable-logo" viewBox="0 0 312 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M18.348 1.384c2.472.024 5.142.162 8.01.414 2.868.252 5.67.774 8.406 1.566l-.684 7.308a439.5 439.5 0 0 0-7.434-.18 494.062 494.062 0 0 0-8.334-.072c-1.344 0-2.484.042-3.42.126-.936.084-1.692.276-2.268.576-.576.3-.99.768-1.242 1.404-.252.636-.378 1.506-.378 2.61 0 1.704.396 2.94 1.188 3.708.792.768 2.16 1.452 4.104 2.052l9.54 3.132c3.984 1.344 6.744 3.168 8.28 5.472 1.536 2.304 2.304 5.328 2.304 9.072 0 2.832-.33 5.178-.99 7.038-.66 1.86-1.716 3.318-3.168 4.374-1.452 1.056-3.354 1.812-5.706 2.268-2.352.456-5.22.684-8.604.684-1.656 0-3.99-.102-7.002-.306-3.012-.204-6.45-.738-10.314-1.602l.684-7.812c2.856.072 5.316.144 7.38.216 2.064.072 3.846.114 5.346.126 1.5.012 2.802.018 3.906.018 1.944 0 3.456-.12 4.536-.36 1.08-.24 1.836-.714 2.268-1.422.432-.708.648-1.734.648-3.078 0-1.2-.156-2.142-.468-2.826-.312-.684-.822-1.236-1.53-1.656-.708-.42-1.65-.798-2.826-1.134L10.5 29.644c-3.816-1.368-6.51-3.18-8.082-5.436C.846 21.952.06 18.964.06 15.244c0-2.856.348-5.19 1.044-7.002C1.8 6.43 2.874 5.026 4.326 4.03c1.452-.996 3.336-1.686 5.652-2.07 2.316-.384 5.106-.576 8.37-.576zM53.916 16.468v23.364c-.024 1.488.288 2.55.936 3.186.648.636 1.704.954 3.168.954 1.464 0 2.934-.276 4.41-.828 1.476-.552 3.306-1.428 5.49-2.628l.828 5.832c-2.592 2.208-5.13 3.864-7.614 4.968s-5.058 1.656-7.722 1.656c-6.744 0-10.116-3.288-10.116-9.864v-26.64h10.62zm23.544 0V52h-8.388l-1.224-6.984-1.044-.972V16.468H77.46zM94.452 16.468l1.332 7.02 1.008.972V52h-10.62V16.468h8.28zm17.352-.936-1.008 9.792h-2.916c-1.68 0-3.438.24-5.274.72-1.836.48-4.146 1.212-6.93 2.196l-.684-5.976c2.472-2.184 4.986-3.852 7.542-5.004 2.556-1.152 5.034-1.728 7.434-1.728h1.836zM131.748.124c.864 0 1.998.024 3.402.072 1.404.048 2.844.126 4.32.234 1.476.108 2.742.258 3.798.45l-.972 6.804h-6.768c-1.824 0-3.09.366-3.798 1.098-.708.732-1.062 1.974-1.062 3.726V52h-10.656V11.14c0-2.232.378-4.17 1.134-5.814.756-1.644 1.992-2.922 3.708-3.834C126.57.58 128.868.124 131.748.124zm8.82 16.344v6.948H113.82v-6.588l6.408-.36h20.34zM164.472 15.532c3 0 5.532.396 7.596 1.188 2.064.792 3.63 2.13 4.698 4.014 1.068 1.884 1.602 4.47 1.602 7.758V52h-8.424l-1.512-7.668-.72-1.116v-14.76c-.024-1.704-.432-2.934-1.224-3.69-.792-.756-2.28-1.134-4.464-1.134-1.848 0-4.14.06-6.876.18-2.736.12-5.544.276-8.424.468l-.972-7.056a91.656 91.656 0 0 1 5.94-.846c2.232-.252 4.476-.456 6.732-.612a88.624 88.624 0 0 1 6.048-.234zm9.54 14.616-.072 5.94-15.84.036c-1.296.024-2.226.348-2.79.972-.564.624-.846 1.476-.846 2.556v1.692c0 1.224.342 2.154 1.026 2.79.684.636 1.758.954 3.222.954 1.248 0 2.61-.264 4.086-.792 1.476-.528 2.934-1.272 4.374-2.232a19.808 19.808 0 0 0 3.852-3.348v4.572c-.432.744-1.074 1.65-1.926 2.718-.852 1.068-1.926 2.124-3.222 3.168s-2.808 1.914-4.536 2.61c-1.728.696-3.696 1.044-5.904 1.044-2.136 0-4.074-.378-5.814-1.134-1.74-.756-3.114-1.878-4.122-3.366-1.008-1.488-1.512-3.324-1.512-5.508v-3.708c0-2.808.96-5.004 2.88-6.588 1.92-1.584 4.56-2.376 7.92-2.376h19.224zM251.144 1.6v39.024c0 1.224.36 2.136 1.08 2.736.72.6 1.764.9 3.132.9h2.916l1.188 7.164c-.576.312-1.392.57-2.448.774-1.056.204-2.136.36-3.24.468-1.104.108-2.04.162-2.808.162-3.192 0-5.718-.828-7.578-2.484-1.86-1.656-2.79-3.996-2.79-7.02V1.6h10.548z" fill="#FFF" fill-rule="nonzero"/><path d="M196.552 54.434V.474h11.032l-.153 43.892c-.235 4.246-.41 6.305-.523 6.175l-.391 1.875c-.166.769-.469 1.297-.908 1.586-.439.288-1.014.432-1.726.432h-7.331z" fill="#FFF"/><path d="M207.5 36.679c-10.48-5.971-18.856-6.147-19.182-.934-.455 7.283 4.847 16.34 12.468 4.114.215 14.747-15.411 21.031-18.77 1.017-1.288-7.67 0-12.016 2.045-14.574 4.634-5.796 21.426 4.068 23.439 10.377zm29.636-9.35c2.03 11.373 0 17.817-3.225 21.609-7.308 8.594-33.787-6.031-36.962-15.386 16.526 8.853 29.735 9.114 30.248 1.385.717-10.799-7.642-24.228-19.66-6.1-.34-21.867 24.302-31.185 29.599-1.508z" fill="#007BFF"/><path d="M280.88 15.532c6.024 0 10.338 1.02 12.942 3.06 2.604 2.04 3.918 5.064 3.942 9.072.048 3.24-.774 5.67-2.466 7.29-1.692 1.62-4.59 2.43-8.694 2.43h-19.908v-5.94h16.992c1.608 0 2.64-.348 3.096-1.044.456-.696.684-1.668.684-2.916-.024-1.704-.504-2.88-1.44-3.528-.936-.648-2.532-.972-4.788-.972-1.968-.024-3.498.234-4.59.774-1.092.54-1.854 1.554-2.286 3.042-.432 1.488-.648 3.66-.648 6.516 0 2.976.264 5.268.792 6.876.528 1.608 1.428 2.724 2.7 3.348 1.272.624 3.024.936 5.256.936 1.656 0 3.696-.066 6.12-.198a114.3 114.3 0 0 0 7.272-.63l1.008 6.588c-1.392.648-2.97 1.164-4.734 1.548-1.764.384-3.582.66-5.454.828a60.846 60.846 0 0 1-5.436.252c-4.512 0-8.136-.654-10.872-1.962-2.736-1.308-4.716-3.33-5.94-6.066-1.224-2.736-1.836-6.24-1.836-10.512 0-4.68.618-8.388 1.854-11.124 1.236-2.736 3.198-4.698 5.886-5.886 2.688-1.188 6.204-1.782 10.548-1.782z" fill="#FFF" fill-rule="nonzero"/>
-        </symbol>
+            <symbol id="surfable-logo" viewBox="0 0 312 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.348 1.384c2.472.024 5.142.162 8.01.414 2.868.252 5.67.774 8.406 1.566l-.684 7.308a439.5 439.5 0 0 0-7.434-.18 494.062 494.062 0 0 0-8.334-.072c-1.344 0-2.484.042-3.42.126-.936.084-1.692.276-2.268.576-.576.3-.99.768-1.242 1.404-.252.636-.378 1.506-.378 2.61 0 1.704.396 2.94 1.188 3.708.792.768 2.16 1.452 4.104 2.052l9.54 3.132c3.984 1.344 6.744 3.168 8.28 5.472 1.536 2.304 2.304 5.328 2.304 9.072 0 2.832-.33 5.178-.99 7.038-.66 1.86-1.716 3.318-3.168 4.374-1.452 1.056-3.354 1.812-5.706 2.268-2.352.456-5.22.684-8.604.684-1.656 0-3.99-.102-7.002-.306-3.012-.204-6.45-.738-10.314-1.602l.684-7.812c2.856.072 5.316.144 7.38.216 2.064.072 3.846.114 5.346.126 1.5.012 2.802.018 3.906.018 1.944 0 3.456-.12 4.536-.36 1.08-.24 1.836-.714 2.268-1.422.432-.708.648-1.734.648-3.078 0-1.2-.156-2.142-.468-2.826-.312-.684-.822-1.236-1.53-1.656-.708-.42-1.65-.798-2.826-1.134L10.5 29.644c-3.816-1.368-6.51-3.18-8.082-5.436C.846 21.952.06 18.964.06 15.244c0-2.856.348-5.19 1.044-7.002C1.8 6.43 2.874 5.026 4.326 4.03c1.452-.996 3.336-1.686 5.652-2.07 2.316-.384 5.106-.576 8.37-.576zM53.916 16.468v23.364c-.024 1.488.288 2.55.936 3.186.648.636 1.704.954 3.168.954 1.464 0 2.934-.276 4.41-.828 1.476-.552 3.306-1.428 5.49-2.628l.828 5.832c-2.592 2.208-5.13 3.864-7.614 4.968s-5.058 1.656-7.722 1.656c-6.744 0-10.116-3.288-10.116-9.864v-26.64h10.62zm23.544 0V52h-8.388l-1.224-6.984-1.044-.972V16.468H77.46zM94.452 16.468l1.332 7.02 1.008.972V52h-10.62V16.468h8.28zm17.352-.936-1.008 9.792h-2.916c-1.68 0-3.438.24-5.274.72-1.836.48-4.146 1.212-6.93 2.196l-.684-5.976c2.472-2.184 4.986-3.852 7.542-5.004 2.556-1.152 5.034-1.728 7.434-1.728h1.836zM131.748.124c.864 0 1.998.024 3.402.072 1.404.048 2.844.126 4.32.234 1.476.108 2.742.258 3.798.45l-.972 6.804h-6.768c-1.824 0-3.09.366-3.798 1.098-.708.732-1.062 1.974-1.062 3.726V52h-10.656V11.14c0-2.232.378-4.17 1.134-5.814.756-1.644 1.992-2.922 3.708-3.834C126.57.58 128.868.124 131.748.124zm8.82 16.344v6.948H113.82v-6.588l6.408-.36h20.34zM164.472 15.532c3 0 5.532.396 7.596 1.188 2.064.792 3.63 2.13 4.698 4.014 1.068 1.884 1.602 4.47 1.602 7.758V52h-8.424l-1.512-7.668-.72-1.116v-14.76c-.024-1.704-.432-2.934-1.224-3.69-.792-.756-2.28-1.134-4.464-1.134-1.848 0-4.14.06-6.876.18-2.736.12-5.544.276-8.424.468l-.972-7.056a91.656 91.656 0 0 1 5.94-.846c2.232-.252 4.476-.456 6.732-.612a88.624 88.624 0 0 1 6.048-.234zm9.54 14.616-.072 5.94-15.84.036c-1.296.024-2.226.348-2.79.972-.564.624-.846 1.476-.846 2.556v1.692c0 1.224.342 2.154 1.026 2.79.684.636 1.758.954 3.222.954 1.248 0 2.61-.264 4.086-.792 1.476-.528 2.934-1.272 4.374-2.232a19.808 19.808 0 0 0 3.852-3.348v4.572c-.432.744-1.074 1.65-1.926 2.718-.852 1.068-1.926 2.124-3.222 3.168s-2.808 1.914-4.536 2.61c-1.728.696-3.696 1.044-5.904 1.044-2.136 0-4.074-.378-5.814-1.134-1.74-.756-3.114-1.878-4.122-3.366-1.008-1.488-1.512-3.324-1.512-5.508v-3.708c0-2.808.96-5.004 2.88-6.588 1.92-1.584 4.56-2.376 7.92-2.376h19.224zM251.144 1.6v39.024c0 1.224.36 2.136 1.08 2.736.72.6 1.764.9 3.132.9h2.916l1.188 7.164c-.576.312-1.392.57-2.448.774-1.056.204-2.136.36-3.24.468-1.104.108-2.04.162-2.808.162-3.192 0-5.718-.828-7.578-2.484-1.86-1.656-2.79-3.996-2.79-7.02V1.6h10.548z" fill="#FFF" fill-rule="nonzero"/><path d="M196.552 54.434V.474h11.032l-.153 43.892c-.235 4.246-.41 6.305-.523 6.175l-.391 1.875c-.166.769-.469 1.297-.908 1.586-.439.288-1.014.432-1.726.432h-7.331z" fill="#FFF"/><path d="M207.5 36.679c-10.48-5.971-18.856-6.147-19.182-.934-.455 7.283 4.847 16.34 12.468 4.114.215 14.747-15.411 21.031-18.77 1.017-1.288-7.67 0-12.016 2.045-14.574 4.634-5.796 21.426 4.068 23.439 10.377zm29.636-9.35c2.03 11.373 0 17.817-3.225 21.609-7.308 8.594-33.787-6.031-36.962-15.386 16.526 8.853 29.735 9.114 30.248 1.385.717-10.799-7.642-24.228-19.66-6.1-.34-21.867 24.302-31.185 29.599-1.508z" fill="#007BFF"/><path d="M280.88 15.532c6.024 0 10.338 1.02 12.942 3.06 2.604 2.04 3.918 5.064 3.942 9.072.048 3.24-.774 5.67-2.466 7.29-1.692 1.62-4.59 2.43-8.694 2.43h-19.908v-5.94h16.992c1.608 0 2.64-.348 3.096-1.044.456-.696.684-1.668.684-2.916-.024-1.704-.504-2.88-1.44-3.528-.936-.648-2.532-.972-4.788-.972-1.968-.024-3.498.234-4.59.774-1.092.54-1.854 1.554-2.286 3.042-.432 1.488-.648 3.66-.648 6.516 0 2.976.264 5.268.792 6.876.528 1.608 1.428 2.724 2.7 3.348 1.272.624 3.024.936 5.256.936 1.656 0 3.696-.066 6.12-.198a114.3 114.3 0 0 0 7.272-.63l1.008 6.588c-1.392.648-2.97 1.164-4.734 1.548-1.764.384-3.582.66-5.454.828a60.846 60.846 0 0 1-5.436.252c-4.512 0-8.136-.654-10.872-1.962-2.736-1.308-4.716-3.33-5.94-6.066-1.224-2.736-1.836-6.24-1.836-10.512 0-4.68.618-8.388 1.854-11.124 1.236-2.736 3.198-4.698 5.886-5.886 2.688-1.188 6.204-1.782 10.548-1.782z" fill="#FFF" fill-rule="nonzero"/>
+            </symbol>
         </defs>
     </svg>
 
-    <header class="bg-black/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+    <header class="bg-black/80 backdrop-blur-sm sticky top-0 z-50 shadow-lg shadow-blue-500/5">
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex-shrink-0">
@@ -213,11 +190,12 @@
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#hero" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-F4F4F4 hover:text-[#007BFF]">Home</a>
-                        <a href="#basics" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-F4F4F4 hover:text-[#007BFF]">Battery 101</a>
-                        <a href="#goodenough-solution" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-F4F4F4 hover:text-[#007BFF]">Glass Solution</a>
-                        <a href="#graphene-aluminum-vision" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-F4F4F4 hover:text-[#007BFF]">Graphene-Aluminum</a>
-                        <a href="#future-solid" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-F4F4F4 hover:text-[#007BFF]">Future Outlook</a>
+                        <a href="#hero" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-[#007BFF]">Home</a>
+                        <a href="#patent-innovation" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-[#007BFF]">Our Innovation</a>
+                        <a href="#paradigm-shift" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-[#007BFF]">Paradigm Shift</a>
+                        <a href="#scaffolding-framework" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-[#007BFF]">Scaffolding</a>
+                        <a href="#graphene-future" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-[#007BFF]">Graphene Future</a>
+                        <a href="#manufacturing" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-[#007BFF]">Manufacturing</a>
                     </div>
                 </div>
                 <div class="md:hidden">
@@ -232,265 +210,197 @@
         </nav>
         <div id="mobile-menu" class="md:hidden hidden">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#hero" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-F4F4F4 hover:text-[#007BFF]">Home</a>
-                <a href="#basics" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-F4F4F4 hover:text-[#007BFF]">Battery 101</a>
-                <a href="#goodenough-solution" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-F4F4F4 hover:text-[#007BFF]">Glass Solution</a>
-                <a href="#graphene-aluminum-vision" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-F4F4F4 hover:text-[#007BFF]">Graphene-Aluminum</a>
-                <a href="#future-solid" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-F4F4F4 hover:text-[#007BFF]">Future Outlook</a>
+                <a href="#hero" class="nav-link block px-3 py-2 rounded-md text-base font-medium hover:text-[#007BFF]">Home</a>
+                <a href="#patent-innovation" class="nav-link block px-3 py-2 rounded-md text-base font-medium hover:text-[#007BFF]">Our Innovation</a>
+                <a href="#paradigm-shift" class="nav-link block px-3 py-2 rounded-md text-base font-medium hover:text-[#007BFF]">Paradigm Shift</a>
+                <a href="#scaffolding-framework" class="nav-link block px-3 py-2 rounded-md text-base font-medium hover:text-[#007BFF]">Scaffolding</a>
+                <a href="#graphene-future" class="nav-link block px-3 py-2 rounded-md text-base font-medium hover:text-[#007BFF]">Graphene Future</a>
+                <a href="#manufacturing" class="nav-link block px-3 py-2 rounded-md text-base font-medium hover:text-[#007BFF]">Manufacturing</a>
             </div>
         </div>
     </header>
 
     <main class="container-fluid">
-        <section id="hero" class="section hero min-h-[80vh] bg-black pt-24 md:pt-32">
+        <section id="hero" class="section hero min-h-screen bg-black pt-24 md:pt-32">
             <div class="container-content">
                 <svg class="logo mx-auto" viewBox="0 0 312 54" fill="#007BFF">
                     <use href="#surfable-logo"></use>
                 </svg>
-                <div class="subheading text-400">
-                    <span class="accent-color">Patent-pending battery architecture</span> delivering breakthrough gains in <em>both</em> <span class="accent-color">power </span>and <span class="accent-color">energy </span>density — engineered to leapfrog industry benchmarks.
+                <h1>NEXT <span class="accent-color">LEAP</span> IN ENERGY</h1>
+                <div class="subheading text-neutral-400">
+                    <span class="accent-color">Patent-pending battery architecture</span> delivering breakthrough gains in <em>both</em> power and energy density — engineered to leapfrog industry benchmarks.
                 </div>
-            <div class="container-content">
-            </div>
-            </div>
-        </section>
-        <section id="basics" class="section bg-black">
-            <div class="container-content">
-                <h3 class="text-xl font-semibold text-F4F4F4">Battery 101: The Playground Analogy</h3>
-                <p class="mt-4 text-lg text-neutral-400">To understand new battery inventions, let's start with the three basic parts of any battery. Think of it like a playground for electricity. Click on each part to learn more about its role.</p>
-            </div>
-            <div class="mt-12 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                <div id="anode-explainer" class="text-center p-6 bg-neutral-800 rounded-xl shadow-lg interactive-card cursor-pointer">
-                    <h4 class="text-xl font-semibold accent-color">Anode (-)</h4>
-                    <p class="mt-2 text-neutral-400">The 'top of the slide' where energy is stored.</p>
-                </div>
-                <div id="electrolyte-explainer" class="text-center p-6 bg-neutral-800 rounded-xl shadow-lg interactive-card cursor-pointer">
-                     <h4 class="text-xl font-semibold accent-color">Electrolyte</h4>
-                    <p class="mt-2 text-neutral-400">The 'slide' itself, a highway for energy particles.</p>
-                </div>
-                <div id="cathode-explainer" class="text-center p-6 bg-neutral-800 rounded-xl shadow-lg interactive-card cursor-pointer">
-                    <h4 class="text-xl font-semibold accent-color">Cathode (+)</h4>
-                    <p class="mt-2 text-neutral-400">The 'bottom of the slide' where energy goes.</p>
-                </div>
-            </div>
-            <div id="explainer-text-area" class="mt-8 p-6 bg-neutral-800 border-l-4 border-[#007BFF] rounded-r-lg min-h-[100px] flex items-center justify-center">
-                <p class="text-F4F4F4 text-center">Click a component above to see its simple explanation here.</p>
             </div>
         </section>
 
-        <section id="goodenough-solution" class="section mid">
+        <section id="patent-innovation" class="section mid">
             <div class="container-content">
-                <h2 class="text-xl font-semibold text-F4F4F4">Goodenough's Glass: A Safer Highway</h2>
-                <p class="mt-4 text-lg text-neutral-400">John Goodenough's big idea was to swap the risky liquid 'highway' in today's batteries for a solid, safe, and super-efficient glass. This change tackles two major battery problems head-on. Use the buttons below to see the critical difference.</p>
+                <h2>Patent-Pending Innovation</h2>
+                <p class="text-neutral-300 text-lg">Our proprietary, scaffold-based graphene–aluminum-ion system boosts <span class="accent-color">power density</span> while simultaneously increasing <span class="accent-color">energy density</span>. This dual-gain architecture sets a new standard for EV storage performance — and opens pathways for wearables and flexible energy systems.</p>
             </div>
-            <div class="mt-12 max-w-5xl mx-auto">
-                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
-                    <button id="btn-li-ion" class="px-6 py-2 bg-[#007BFF] text-F4F4F4 font-semibold rounded-lg shadow-md hover:bg-[#0056B3] focus:outline-none focus:ring-2 focus:ring-[#007BFF] focus:ring-opacity-75">Today's Battery Problem</button>
-                    <button id="btn-glass" class="px-6 py-2 bg-neutral-800 text-F4F4F4 font-semibold rounded-lg shadow-md hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-neutral-700 focus:ring-opacity-75">The Glass Solution</button>
-                </div>
-                <div id="comparison-display" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                </div>
-            </div>
+        </section>
 
-            <div class="container-content mt-16">
-                <h2 class="text-xl font-semibold text-F4F4F4">The Bold Promises of Glass Batteries</h2>
-                <p class="mt-4 text-lg text-neutral-400">The switch to a glass electrolyte isn't just about safety; it unlocks a new level of performance. The chart below visualizes the claimed advantages of the glass battery over traditional lithium-ion technology. Hover over the bars for more context, especially if you're an investor or researcher looking for details.</p>
-                <div class="mt-12">
-                    <div class="chart-container">
-                        <canvas id="promisesChart"></canvas>
+        <section id="paradigm-shift" class="section bg-black">
+            <div class="container-content">
+                <h2>The Paradigm Shift: From "Glass" to Scaffolding</h2>
+                <p class="text-neutral-300 text-lg mb-8">The quest for the perfect solid-state battery has evolved. Early concepts like the "glass battery" promised a single "wonder material" to solve all problems. However, scientific scrutiny revealed fundamental challenges. The industry has now shifted towards a more robust, hybrid approach: the Solid Scaffolding Framework.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                    <div class="bg-neutral-900 p-6 rounded-lg border border-red-500/50">
+                        <h3 class="text-red-500">The Monolithic "Glass" Approach</h3>
+                        <p class="text-neutral-400">The initial idea was a single, dense piece of glass acting as both the separator and the ion highway. While simple in concept, this approach faced major hurdles with ion mobility (especially for large ions like aluminum's) and cracking under stress.</p>
                     </div>
-                </div>
-            </div>
-
-            <div class="container-content mt-16">
-                <h2 class="text-F4F4F4 mb-6">The Goodenough Recipe: How It's Made</h2>
-                <p class="mt-4 text-lg text-neutral-400">Goodenough's proposed design uses simple, abundant materials. This section shows the components of a complete battery cell, ideal for understanding the basics of its construction.</p>
-                <div class="mt-12 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-neutral-800 p-6 rounded-xl shadow-lg text-center">
-                        <div class="text-4xl mb-4">🔋</div>
-                        <h4 class="text-xl font-semibold text-F4F4F4">Anode (Negative)</h4>
-                        <p class="mt-2 text-neutral-400">A simple, thin foil of an alkali metal.</p>
-                        <div class="mt-4 space-y-2">
-                            <span class="inline-block bg-zinc-800 text-yellow-300 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Lithium Foil</span>
-                            <span class="inline-block bg-zinc-800 text-yellow-300 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Sodium Foil</span>
-                        </div>
-                    </div>
-                    <div class="bg-neutral-800 p-6 rounded-xl shadow-lg text-center">
-                        <div class="text-4xl mb-4">💎</div>
-                        <h4 class="text-xl font-semibold text-F4F4F4">Electrolyte (Highway)</h4>
-                        <p class="mt-2 text-neutral-400">The core innovation: a special, highly conductive glass.</p>
-                         <div class="mt-4 space-y-2">
-                            <span class="inline-block bg-zinc-800 text-teal-300 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Lithium Hydroxide</span>
-                            <span class="inline-block bg-zinc-800 text-teal-300 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Lithium Chloride</span>
-                            <span class="inline-block bg-zinc-800 text-teal-300 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">+ Barium</span>
-                        </div>
-                    </div>
-                    <div class="bg-neutral-800 p-6 rounded-xl shadow-lg text-center">
-                         <div class="text-4xl mb-4">⚡</div>
-                        <h4 class="text-xl font-semibold text-F4F4F4">Cathode (Positive)</h4>
-                        <p class="mt-2 text-neutral-400">A mixture that stores energy, coated on copper.</p>
-                         <div class="mt-4 space-y-2">
-                            <span class="inline-block bg-zinc-800 text-rose-300 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Carbon</span>
-                            <span class="inline-block bg-zinc-800 text-rose-300 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">or Sulfur</span>
-                            <span class="inline-block bg-zinc-800 text-rose-300 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">or Manganese Dioxide</span>
-                        </div>
+                    <div class="bg-neutral-900 p-6 rounded-lg border-green-500/50">
+                        <h3 class="text-green-500">The Hybrid Scaffolding Framework</h3>
+                        <p class="text-neutral-400">The new paradigm uses a rigid, porous scaffold to provide mechanical structure, while a separate, highly conductive material (like an ionic liquid) fills the pores to act as a superhighway for ions. This decouples the battery's functions, allowing each component to be optimized for peak performance.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="graphene-aluminum-vision" class="section bg-black">
+        <section id="scaffolding-framework" class="section mid">
             <div class="container-content">
-                <h2 class="text-xl font-semibold text-F4F4F4">Surfable's Vision: Graphene-Aluminum Glass Battery</h2>
-                <p class="mt-4 text-lg text-neutral-400">At Surfable, we're exploring the next leap in energy: combining <strong>graphene</strong>(like super-thin pencil lead) and <strong>aluminum</strong>(like cooking foil) with a special <strong>glass electrolyte</strong>. These materials are abundant, affordable, and kinder to our environment, making them an exciting foundation for future batteries.</p>
+                <h2>The Solid Scaffolding Framework: A Proven Concept</h2>
+                <p class="text-neutral-300 text-lg mb-8">This isn't just a theory. Recent breakthroughs in aluminum-ion batteries have provided powerful, real-world proof that the scaffolding framework is the most viable path to high-performance solid-state energy storage.</p>
+                <div class="bg-neutral-900 p-8 rounded-lg text-left border border-neutral-700">
+                    <h3>Case Study: The Aluminum Fluoride (AlF3) Scaffold</h3>
+                    <p class="text-neutral-400 mb-4">Researchers built a solid-state aluminum-ion battery using a porous, 3D framework of aluminum fluoride (AlF3). This rigid scaffold was filled with a traditional aluminum-ion liquid electrolyte. The result? A battery with exceptional performance, proving the scaffolding concept works.</p>
+                    <table class="table-custom">
+                        <thead>
+                            <tr>
+                                <th>Performance Metric</th>
+                                <th>Reported Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Cycle Life</strong></td>
+                                <td class="text-pro">>10,000 charge-discharge cycles</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Capacity Retention</strong></td>
+                                <td class="text-pro">>99% of original capacity after 10,000 cycles</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Thermal Stability</strong></td>
+                                <td class="text-pro">Operates at temperatures up to 200°C (392°F)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Physical Durability</strong></td>
+                                <td class="text-pro">Withstands repeated punctures and impacts</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="graphene-future" class="section bg-black">
+            <div class="container-content">
+                <h2>The Future: Crumbled Nano-Graphene Scaffolds</h2>
+                <p class="text-neutral-300 text-lg mb-8">The success of the AlF3 framework is the blueprint for the next frontier: Surfable's vision of a crumbled nano-graphene scaffold. Graphene's immense surface area and unique structure make it the ultimate candidate for a high-performance battery framework.</p>
                 
-                <h3 class="text-F4F4F4 mt-12 mb-6">How This New Battery Might Work (Grade 5 Style!)</h3>
-                <p class="mt-2 text-neutral-400">Imagine our playground slide battery, but with different players and an even more special glass highway. This concept uses materials we have lots of, making it a sustainable and powerful idea.</p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-                    <div class="bg-neutral-800 p-6 rounded-xl shadow-lg text-center">
-                        <div class="text-4xl mb-4">⚫</div>
-                        <h4 class="text-xl font-semibold text-F4F4F4">Anode (Top of the Slide)</h4>
-                        <p class="mt-2 text-neutral-400">Made of <strong>graphene </strong>or <strong>graphite</strong>, with tiny pockets to hold <strong>aluminum ions</strong>(like tiny aluminum marbles).</p>
+                <div class="bg-neutral-900 p-8 rounded-lg border border-neutral-700">
+                    <h3 class="accent-color">Visualizing the Concept</h3>
+                    <p class="text-neutral-400 mb-6">Instead of flat sheets that can restack and block ion flow, crumpled nano-graphene forms porous, sphere-like particles. This creates a 3D "ion highway" with tailored channels, perfect for the rapid movement of large aluminum-based ions.</p>
+                    <!-- HTML/CSS Diagram -->
+                    <div class="w-full max-w-md mx-auto aspect-square bg-neutral-800 rounded-full flex items-center justify-center p-4 relative overflow-hidden">
+                        <div class="text-center z-10">
+                            <p class="font-bold text-lg text-white">Crumpled Graphene Scaffold</p>
+                            <p class="text-sm text-neutral-300">(Structural Support)</p>
+                        </div>
+                        <!-- Animated Ions -->
+                        <div class="absolute top-0 left-0 w-full h-full">
+                            <span class="absolute block w-3 h-3 bg-blue-400 rounded-full animate-flow" style="animation: flow 4s linear infinite; top: 10%; left: 10%;"></span>
+                            <span class="absolute block w-2 h-2 bg-blue-300 rounded-full animate-flow" style="animation: flow 5s linear infinite 0.5s; top: 50%; left: 80%;"></span>
+                            <span class="absolute block w-3 h-3 bg-blue-400 rounded-full animate-flow" style="animation: flow 3.5s linear infinite 1s; top: 80%; left: 20%;"></span>
+                            <span class="absolute block w-2 h-2 bg-blue-300 rounded-full animate-flow" style="animation: flow 6s linear infinite 1.5s; top: 30%; left: 60%;"></span>
+                        </div>
+                        <div class="absolute inset-2 border-2 border-dashed border-neutral-600 rounded-full"></div>
+                        <div class="absolute inset-8 border border-neutral-700 rounded-full"></div>
+                        <p class="absolute bottom-4 text-xs text-blue-300">Ionic Liquid Fills Pores (Ion Highway)</p>
                     </div>
-                    <div class="bg-neutral-800 p-6 rounded-xl shadow-lg text-center">
-                        <div class="text-4xl mb-4">✨</div>
-                        <h4 class="text-xl font-semibold text-F4F4F4">Electrolyte (The Glass Slide)</h4>
-                        <p class="mt-2 text-neutral-400">A solid, clear glass with secret tunnels for aluminum ions or aluminum chloride ions to pass through.</p>
-                    </div>
-                    <div class="bg-neutral-800 p-6 rounded-xl shadow-lg text-center">
-                        <div class="text-4xl mb-4">⚪</div>
-                        <h4 class="text-xl font-semibold text-F4F4F4">Cathode (Bottom of the Slide)</h4>
-                        <p class="mt-2 text-neutral-400">Also made of special <strong>graphite </strong>or other carbon materials, ready to receive the aluminum marbles.</p>
-                    </div>
-                </div>
-                
-                <h3 class="text-xl font-semibold text-F4F4F4 mt-12 mb-6">Why a Glass Highway for Aluminum is Awesome</h3>
-                <p class="mt-2 text-neutral-400">Just like with Goodenough's battery, using a glass highway for aluminum ions brings fantastic benefits, addressing key concerns for customers and investors.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                    <div class="bg-neutral-800 p-6 rounded-xl shadow-lg">
-                        <h4 class="font-semibold accent-color text-lg">Super Safe!</h4>
-                        <p class="mt-2 text-neutral-400">A glass highway is solid and won't burn, making the battery much safer. No more flammable liquids!</p>
-                    </div>
-                    <div class="bg-neutral-800 p-6 rounded-xl shadow-lg">
-                        <h4 class="font-semibold accent-color text-lg">No Poky Spikes!</h4>
-                        <p class="mt-2 text-neutral-400">The tough glass stops sharp spikes (dendrites) from growing, extending battery life and improving safety.</p>
-                    </div>
-                    <div class="bg-neutral-800 p-6 rounded-xl shadow-lg">
-                        <h4 class="font-semibold accent-color text-lg">Lots of Power!</h4>
-                        <p class="mt-2 text-neutral-400">Using materials like aluminum can store huge amounts of energy, meaning devices last longer and EVs go farther.</p>
-                    </div>
-                    <div class="bg-neutral-800 p-6 rounded-xl shadow-lg">
-                        <h4 class="font-semibold accent-color text-lg">Fast Charging?</h4>
-                        <p class="mt-2 text-neutral-400">The right glass could let aluminum ions zip through, allowing super-fast charging in minutes.</p>
-                    </div>
+                    <style>
+                        @keyframes flow {
+                            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+                            25% { transform: translate(40px, 60px) scale(1.1); }
+                            50% { transform: translate(-30px, -50px) scale(1); }
+                            75% { transform: translate(50px, -20px) scale(0.9); }
+                            100% { transform: translate(0, 0) scale(1); opacity: 1; }
+                        }
+                    </style>
                 </div>
 
-                <div class="mt-16 text-left">
-                    <h3 class="text-F4F4F4 mb-6 text-center">What Special "Glass" Materials Could Work? (For Researchers)</h3>
-                    <p class="text-lg text-neutral-400 text-center mb-8">This is the trickiest part for scientists! Aluminum ions are a bit "stickier" and move slower than lithium ions because they have a bigger electric charge. They need wider, smoother tunnels in the glass. Here are some advanced material ideas being explored:</p>
-                    
-                    <div class="bg-neutral-800 p-6 rounded-xl shadow-lg interactive-card cursor-pointer" onclick="toggleDetails('chalcogenide-details')">
-                        <h4 class="text-xl font-semibold text-F4F4F4 flex justify-between items-center">
-                            Chalcogenide Glasses
-                            <span id="chalcogenide-toggle-icon" class="text-2xl transform transition-transform duration-300">▼</span>
-                        </h4>
-                        <div id="chalcogenide-details" class="hidden mt-4 text-neutral-400 space-y-2">
-                            <p>These glasses use elements like <strong>sulfur, selenium, or tellurium</strong>instead of oxygen. They can have a more open, "floppy" structure, making it easier for larger, stickier ions like aluminum to move. They also show good ion conduction properties.</p>
-                        </div>
-                    </div>
-
-                    <div class="bg-neutral-800 p-6 rounded-xl shadow-lg interactive-card cursor-pointer mt-4" onclick="toggleDetails('polymer-details')">
-                        <h4 class="text-xl font-semibold text-F4F4F4 flex justify-between items-center">
-                            Solid Polymer Electrolytes with Aluminum Salts
-                            <span id="polymer-toggle-icon" class="text-2xl transform transition-transform duration-300">▼</span>
-                        </h4>
-                        <div id="polymer-details" class="hidden mt-4 text-neutral-400 space-y-2">
-                            <p>These aren't strictly "glass" but are super-stretchy, plastic-like materials (polymers) mixed with <strong>aluminum salts</strong>(like aluminum chloride, $AlCl_3$). They could form a soft, clear highway. The challenge is making them conductive enough at normal temperatures.</p>
-                        </div>
-                    </div>
-
-                    <div class="bg-neutral-800 p-6 rounded-xl shadow-lg interactive-card cursor-pointer mt-4" onclick="toggleDetails('halide-details')">
-                        <h4 class="text-xl font-semibold text-F4F4F4 flex justify-between items-center">
-                            Special Halide Glasses
-                            <span id="halide-toggle-icon" class="text-2xl transform transition-transform duration-300">▼</span>
-                        </h4>
-                        <div id="halide-details" class="hidden mt-4 text-neutral-400 space-y-2">
-                            <p>These glasses contain elements like <strong>chlorine</strong>or <strong>fluorine</strong>. Some have structures that allow different kinds of ions, including aluminum or aluminum chloride complex ions (where aluminum travels with chlorine attached, e.g., $[AlCl_4]^-$), to move through.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="future-solid" class="section mid">
-            <div class="container-content">
-                <h2 class="text-xl font-semibold text-F4F4F4">The Great Debate & The Solid Future</h2>
-                <p class="mt-4 text-lg text-neutral-400">Science grows stronger through open discussion. John Goodenough's bold claims sparked a vital debate among scientists, pushing the boundaries of what's possible in battery tech. This section looks at those discussions and the broader race to build the perfect solid-state battery for our future.</p>
-            </div>
-            <div class="mt-12 max-w-4xl mx-auto bg-neutral-800 rounded-xl shadow-lg overflow-hidden">
-                <div class="md:flex">
-                    <div class="p-8">
-                        <h3 class="uppercase tracking-wide text-xl accent-color font-semibold">The Core Paradox of Goodenough's Initial Design</h3>
-                        <p class="block mt-1 text-lg font-medium text-F4F4F4">How can a battery work with two identical electrodes?</p>
-                        <p class="mt-2 text-neutral-400">The initial paper described a battery with pure lithium on both the anode and cathode side. This seemed to defy basic battery physics, as a voltage difference is needed to generate power. It's like having a slide that's perfectly flat—nothing would move.</p>
-                        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <h4 class="font-semibold text-F4F4F4">Goodenough's Explanation:</h4>
-                                <p class="mt-1 text-neutral-400">He suggested lithium on the cathode forms an ultra-thin "monolayer" that behaves differently, creating the necessary energy difference.</p>
+                <div class="mt-12 text-left">
+                    <h3 class="text-center mb-6">Possibilities & Options</h3>
+                    <div class="space-y-4">
+                        <div class="bg-neutral-900 p-6 rounded-lg border border-neutral-700 interactive-card cursor-pointer" onclick="toggleDetails('graphene-details')">
+                            <h4 class="text-xl font-semibold text-F4F4F4 flex justify-between items-center">
+                                Why Crumpled Nano-Graphene?
+                                <span id="graphene-toggle-icon" class="text-2xl transform transition-transform duration-300">▼</span>
+                            </h4>
+                            <div id="graphene-details" class="hidden mt-4 text-neutral-400 space-y-2">
+                                <p><strong class="text-pro">Massive Surface Area:</strong> Graphene's theoretical surface area is staggering (2,600 m²/g). Crumpling prevents restacking, keeping this area accessible for ion storage and transport.</p>
+                                <p><strong class="text-pro">Hierarchical Porous Structure:</strong> The scaffold can be engineered with specific pore sizes to match the charge-carrying ions (e.g., $AlCl_4^−$), creating an optimized "ion highway" for extremely fast charging.</p>
+                                <p><strong class="text-pro">Excellent Conductivity:</strong> Graphene is highly conductive for both ions and electrons, reducing internal resistance and boosting power density.</p>
                             </div>
-                            <div>
-                                <h4 class="font-semibold text-F4F4F4">The Skeptics' Rebuttal:</h4>
-                                <p class="mt-1 text-neutral-400">Other scientists argued this effect is too small to power a practical, high-capacity battery, as a single layer of atoms couldn't move enough charge for real-world use.</p>
+                        </div>
+                        <div class="bg-neutral-900 p-6 rounded-lg border border-neutral-700 interactive-card cursor-pointer" onclick="toggleDetails('electrolyte-details')">
+                            <h4 class="text-xl font-semibold text-F4F4F4 flex justify-between items-center">
+                                What Fills the Scaffold?
+                                <span id="electrolyte-toggle-icon" class="text-2xl transform transition-transform duration-300">▼</span>
+                            </h4>
+                            <div id="electrolyte-details" class="hidden mt-4 text-neutral-400 space-y-2">
+                                <p>The graphene scaffold would be impregnated with a highly conductive material to form a "porous ionic network." The best candidates are:</p>
+                                <p><strong>Ionic Liquids:</strong> Salts that are liquid at room temperature. They offer high ionic conductivity and a wide electrochemical window, perfect for facilitating high-speed ion transport within the scaffold.</p>
+                                <p><strong>Gel Polymer Electrolytes:</strong> A hybrid approach where a polymer matrix containing a liquid electrolyte is trapped within the graphene pores. This can enhance safety and mechanical flexibility.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="container-content mt-16">
-                <h2 class="text-xl font-semibold text-F4F4F4">The Global Race for Solid-State Batteries</h2>
-                <p class="mt-4 text-lg text-neutral-400">Goodenough's glass battery is part of a bigger global effort to develop safe, solid-state batteries. Glass is just one promising material; others like polymers, ceramics, and sulfides are also being explored. Click on each type to learn about the competition and the ongoing challenges.</p>
-            </div>
-            <div class="mt-12 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="future-card bg-neutral-800 p-6 rounded-xl shadow-lg cursor-pointer interactive-card">
-                    <h4 class="text-xl font-semibold text-F4F4F4">Glass Electrolytes</h4>
-                    <div class="future-card-content hidden mt-4 text-neutral-400 space-y-2">
-                        <p><strong class="text-green-500">Pro:</strong> High conductivity, non-flammable, prevents dendrites.</p>
-                        <p><strong class="text-red-500">Con:</strong> The technology is still in early, controversial stages of research.</p>
-                    </div>
-                </div>
-                <div class="future-card bg-neutral-800 p-6 rounded-xl shadow-lg cursor-pointer interactive-card">
-                    <h4 class="text-xl font-semibold text-F4F4F4">Polymer Electrolytes</h4>
-                    <div class="future-card-content hidden mt-4 text-neutral-400 space-y-2">
-                        <p><strong class="text-green-500">Pro:</strong> Flexible and easy to manufacture with existing methods.</p>
-                        <p><strong class="text-red-500">Con:</strong> Often have low conductivity and need to be heated to work well.</p>
-                    </div>
-                </div>
-                <div class="future-card bg-neutral-800 p-6 rounded-xl shadow-lg cursor-pointer interactive-card">
-                    <h4 class="text-xl font-semibold text-F4F4F4">Ceramic Electrolytes</h4>
-                    <div class="future-card-content hidden mt-4 text-neutral-400 space-y-2">
-                        <p><strong class="text-green-500">Pro:</strong> Very stable with good ionic conductivity.</p>
-                        <p><strong class="text-red-500">Con:</strong> Heavy, expensive, and can crack under the high pressure needed for operation.</p>
-                    </div>
-                </div>
-                <div class="future-card bg-neutral-800 p-6 rounded-xl shadow-lg cursor-pointer interactive-card">
-                    <h4 class="text-xl font-semibold text-F4F4F4">Sulfide Electrolytes</h4>
-                    <div class="future-card-content hidden mt-4 text-neutral-400 space-y-2">
-                        <p><strong class="text-green-500">Pro:</strong> Exceptionally high ionic conductivity, among the best.</p>
-                        <p><strong class="text-red-500">Con:</strong> Can be unstable and absorb water from the air, degrading performance.</p>
-                    </div>
-                </div>
+        <section id="manufacturing" class="section mid">
+            <div class="container-content">
+                <h2>Manufacturing the Future: How It Can Be Made</h2>
+                <p class="text-neutral-300 text-lg mb-8">A revolutionary battery is only viable if it can be manufactured affordably and at scale. Traditional high-temperature methods are too costly and complex. The future lies in advanced, low-temperature techniques that enable the creation of these sophisticated hybrid architectures.</p>
+                <table class="table-custom">
+                    <thead>
+                        <tr>
+                            <th>Fabrication Technique</th>
+                            <th>Description</th>
+                            <th>Key Advantage for Scaffolds</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Cold Pressing</strong></td>
+                            <td class="text-neutral-400">Using high pressure at room temperature to consolidate powdered materials (like graphene and electrolyte components) into a dense, solid structure.</td>
+                            <td class="text-pro">Low energy, low cost, and avoids thermal damage to sensitive materials. Ideal for creating the initial scaffold structure.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cold Sintering</strong></td>
+                            <td class="text-neutral-400">A low-temperature process (below 300°C) that uses pressure and a transient liquid solvent to bind dissimilar materials, like ceramics and polymers.</td>
+                            <td class="text-pro">Perfect for creating dense, hybrid composite structures without the high energy costs and potential for side reactions of traditional hot pressing.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ball Milling</strong></td>
+                            <td class="text-neutral-400">A mechanical process that uses grinding media to mix and reduce the particle size of powders, creating amorphous or nano-structured materials.</td>
+                            <td class="text-pro">Can be used to create the nano-graphene precursor materials and intimately mix them with electrolyte components before pressing.</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
     </main>
 
-    <footer class="section bg-neutral-800 text-neutral-300 py-6">
+    <footer class="section footer bg-neutral-900">
         <div class="container-content">
             <svg class="footer-logo mx-auto" viewBox="0 0 312 54" fill="#F4F4F4">
                 <use href="#surfable-logo"></use>
             </svg>
             <div class="footer-tagline">Engineering Boundless Performance.</div>
-            <div class="contact-info mt-4">
+            <div class="contact-info">
                 <p>Email: <a href="mailto:info@surfable.ca">info@surfable.ca</a></p>
                 <p>Phone: <a href="tel:+14169375555">+1 (416) 937-5555</a></p>
             </div>
@@ -502,48 +412,20 @@
         document.addEventListener('DOMContentLoaded', function () {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
             const navLinks = document.querySelectorAll('.nav-link');
             const sections = document.querySelectorAll('main section');
-            const explainerData = {
-                'anode-explainer': {
-                    title: 'Anode (-)',
-                    text: 'This is the negative side of the battery. It holds a lot of energy, like a person waiting at the top of a tall slide, ready to go.'
-                },
-                'electrolyte-explainer': {
-                    title: 'Electrolyte',
-                    text: 'This is the highway that tiny energy particles (called ions) travel on to get from the anode to the cathode. In most batteries it\'s a liquid, but in Goodenough\'s it\'s a special glass.'
-                },
-                'cathode-explainer': {
-                    title: 'Cathode (+)',
-                    text: 'This is the positive side of the battery. It\'s at a lower energy level, like the bottom of the slide, waiting to receive the energy.'
-                }
-            };
-            const comparisonData = {
-                liIon: {
-                    title: 'Problem 1: Flammable Liquid',
-                    description: 'The liquid electrolyte in standard batteries is flammable, creating a fire risk if the battery is damaged or overheats. This is a major safety concern.',
-                    visual: '<div class="bg-neutral-800 p-6 rounded-xl shadow-lg border-2 border-red-600"><h4 class="font-bold text-red-500">🔥 Flammable Liquid</h4><p class="mt-2 text-neutral-400">A liquid highway that can catch fire.</p></div>',
-                    title2: 'Problem 2: Dendrites',
-                    description2: 'Over time, sharp, spiky growths called dendrites can form. They can pierce the internal separator, causing a short circuit and potentially a fire. This limits battery lifespan and safety.',
-                    visual2: '<div class="bg-neutral-800 p-6 rounded-xl shadow-lg border-2 border-red-600"><h4 class="font-bold text-red-500">🌵 Spiky Dendrites</h4><p class="mt-2 text-neutral-400">Dangerous growths that cause short circuits.</p></div>'
-                },
-                glass: {
-                    title: 'Solution 1: Solid & Safe',
-                    description: 'The glass electrolyte is a solid, which means it is not flammable. This inherently makes the battery much safer and removes the risk of fires from the electrolyte.',
-                    visual: '<div class="bg-neutral-800 p-6 rounded-xl shadow-lg border-2 border-green-700"><h4 class="font-bold text-green-500">🛡️ Non-Flammable Solid</h4><p class="mt-2 text-neutral-400">A solid highway that can\'t burn.</p></div>',
-                    title2: 'Solution 2: Blocks Dendrites',
-                    description2: 'The rigid structure of the solid glass physically blocks dendrites from forming and growing through the battery. This dramatically improves safety and allows for a longer battery life.',
-                    visual2: '<div class="bg-neutral-800 p-6 rounded-xl shadow-lg border-2 border-green-700"><h4 class="font-bold text-green-500">🧱 Solid Barrier</h4><p class="mt-2 text-neutral-400">Physically blocks dendrites from growing.</p></div>'
-                }
-            };
-            const explainerTextArea = document.getElementById('explainer-text-area');
-            const btnLiIon = document.getElementById('btn-li-ion');
-            const btnGlass = document.getElementById('btn-glass');
-            const comparisonDisplay = document.getElementById('comparison-display');
 
-            mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+            const observerOptions = {
+                root: null,
+                rootMargin: '-50% 0px -50% 0px',
+                threshold: 0
+            };
 
-            const observerOptions = { root: null, rootMargin: '-50% 0px -50% 0px', threshold: 0 };
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -558,110 +440,15 @@
                 });
             }, observerOptions);
 
-            sections.forEach(section => { observer.observe(section); });
+            sections.forEach(section => {
+                observer.observe(section);
+            });
 
             navLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
-                    if(mobileMenu.classList.contains('hidden') === false){ mobileMenu.classList.add('hidden'); }
-                });
-            });
-
-            document.querySelectorAll('#basics .interactive-card').forEach(card => {
-                card.addEventListener('click', () => {
-                    const data = explainerData[card.id];
-                    explainerTextArea.innerHTML = `<p class="text-F4F4F4 text-center text-lg"><strong class="accent-color">${data.title}:</strong> ${data.text}</p>`;
-                });
-            });
-
-            function updateComparison(type) {
-                const data = comparisonData[type];
-                comparisonDisplay.innerHTML = `
-                    <div class="max-w-full">
-                        ${data.visual}
-                        <h4 class="text-xl font-semibold mt-4 text-F4F4F4">${data.title}</h4>
-                        <p class="mt-2 text-neutral-400">${data.description}</p>
-                    </div>
-                    <div class="max-w-full">
-                        ${data.visual2}
-                        <h4 class="text-xl font-semibold mt-4 text-F4F4F4">${data.title2}</h4>
-                        <p class="mt-2 text-neutral-400">${data.description2}</p>
-                    </div>
-                `;
-                if (type === 'liIon') {
-                    btnLiIon.classList.add('bg-[#007BFF]', 'text-F4F4F4');
-                    btnLiIon.classList.remove('bg-neutral-800', 'text-F4F4F4');
-                    btnGlass.classList.add('bg-neutral-800', 'text-F4F4F4');
-                    btnGlass.classList.remove('bg-[#007BFF]', 'text-F4F4F4');
-                } else {
-                    btnGlass.classList.add('bg-[#007BFF]', 'text-F4F4F4');
-                    btnGlass.classList.remove('bg-neutral-800', 'text-F4F4F4');
-                    btnLiIon.classList.add('bg-neutral-800', 'text-F4F4F4');
-                    btnLiIon.classList.remove('bg-[#007BFF]', 'text-F4F4F4');
-                }
-            }
-            btnLiIon.addEventListener('click', () => updateComparison('liIon'));
-            btnGlass.addEventListener('click', () => updateComparison('glass'));
-            updateComparison('liIon');
-
-            const promisesCtx = document.getElementById('promisesChart').getContext('2d');
-            new Chart(promisesCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['Safety', 'Charging Speed', 'Lifespan', 'Energy Density'],
-                    datasets: [{
-                        label: 'Standard Li-Ion',
-                        data: [50, 20, 60, 70],
-                        backgroundColor: '#555555',
-                        borderColor: '#777777',
-                        borderWidth: 1
-                    }, {
-                        label: 'Glass Battery (Claimed)',
-                        data: [95, 90, 85, 90],
-                        backgroundColor: '#007BFF',
-                        borderColor: '#0056B3',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    indexAxis: 'y',
-                    scales: {
-                        x: {
-                            beginAtZero: true,
-                            max: 100,
-                            ticks: { color: '#F4F4F4', callback: function(value) { return value + '%' } },
-                            grid: { color: '#333333' }
-                        },
-                        y: {
-                            ticks: { color: '#F4F4F4' },
-                            grid: { display: false }
-                        }
-                    },
-                    plugins: {
-                        legend: { position: 'top', labels: { color: '#F4F4F4' } },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    let label = context.dataset.label || '';
-                                    if (label) { label += ': '; }
-                                    const characteristic = context.label;
-                                    if (characteristic === 'Safety') label += (context.dataset.label === 'Standard Li-Ion' ? 'Flammable' : 'Non-flammable');
-                                    if (characteristic === 'Charging Speed') label += (context.dataset.label === 'Standard Li-Ion' ? 'Hours' : 'Minutes');
-                                    if (characteristic === 'Lifespan') label += (context.dataset.label === 'Standard Li-Ion' ? '~500 cycles' : '1200+ cycles');
-                                    if (characteristic === 'Energy Density') label += (context.dataset.label === 'Standard Li-Ion' ? 'Standard' : 'Many times higher');
-                                    return label;
-                                }
-                            }
-                        }
+                    if(mobileMenu.classList.contains('hidden') === false){
+                        mobileMenu.classList.add('hidden');
                     }
-                }
-            });
-
-            document.querySelectorAll('.future-card').forEach(card => {
-                card.addEventListener('click', () => {
-                    const content = card.querySelector('.future-card-content');
-                    content.classList.toggle('hidden');
                 });
             });
 
@@ -675,7 +462,7 @@
                     element.classList.add('hidden');
                     icon.classList.remove('rotate-180');
                 }
-            };
+            }
         });
     </script>
 </body>
