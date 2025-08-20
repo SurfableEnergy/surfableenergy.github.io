@@ -33,40 +33,44 @@
     </script>
 
     <style>
+        /* Inlined Font-Face rules from Google Fonts with corrected paths */
         @font-face{
-          font-family:'Exo 2';
-          font-style:normal;
-          font-weight:300;
-          font-display:swap;
-          src:url(./css/fonts/static/Exo2-Light.ttf) format('truetype');
+            font-family:'Exo 2';
+            font-style:normal;
+            font-weight:300;
+            font-display:swap;
+            src:url(./css/fonts/static/Exo2-Light.ttf) format('truetype');
         }
         @font-face{
-          font-family:'Exo 2';
-          font-style:normal;
-          font-weight:400;
-          font-display:swap;
-          src:url(./css/fonts/static/Exo2-Regular.ttf) format('truetype');
+            font-family:'Exo 2';
+            font-style:normal;
+            font-weight:400;
+            font-display:swap;
+            src:url(./css/fonts/static/Exo2-Regular.ttf) format('truetype');
         }
         @font-face{
-          font-family:'Exo 2';
-          font-style:normal;
-          font-weight:600;
-          font-display:swap;
-          src:url(./css/fonts/static/Exo2-SemiBold.ttf) format('truetype');
+            font-family:'Exo 2';
+            font-style:normal;
+            font-weight:600;
+            font-display:swap;
+            src:url(./css/fonts/static/Exo2-SemiBold.ttf) format('truetype');
         }
         @font-face{
-          font-family:'Exo 2';
-          font-style:normal;
-          font-weight:700;
-          font-display:swap;
-          src:url(./css/fonts/static/Exo2-Bold.ttf) format('truetype');
+            font-family:'Exo 2';
+            font-style:normal;
+            font-weight:700;
+            font-display:swap;
+            src:url(./css/fonts/static/Exo2-Bold.ttf) format('truetype');
         }
+        /* Critical CSS for layout and styling */
         body {
             font-family: 'Exo 2', sans-serif;
             background-color: #000;
             color: #F4F4F4;
             line-height: 1.7;
             overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
         }
         .section {
             padding: 4rem 2rem;
@@ -113,7 +117,7 @@
         }
         footer p {
             font-size: .9rem;
-            color: #888;
+            color: #A0A0A0; /* Adjusted for better contrast */
         }
         .contact-info a {
             color: #007BFF;
@@ -150,86 +154,35 @@
             height: 300px;
             max-height: 40vh;
         }
-        .bg-yellow-50 {
-            background-color: #222;
-        }
-        .border-yellow-500 {
-            border-color: #007BFF;
-        }
-        .text-stone-700 {
-            color: #F4F4F4;
-        }
-        .text-yellow-800 {
-            color: #007BFF;
-        }
-        .bg-white {
-            background-color: #1A1A1A;
-            color: #F4F4F4;
-        }
-        .text-stone-800 {
-            color: #F4F4F4;
-        }
-        .text-stone-600 {
-            color: #A0A0A0;
-        }
-        .text-black {
-            color: #F4F4F4;
-        }
-        .bg-yellow-600 {
-            background-color: #007BFF;
-        }
-        .hover\:bg-yellow-700:hover {
-            background-color: #0056B3;
-        }
-        .text-stone-700 {
-            color: #F4F4F4;
-        }
-        .bg-stone-200 {
-            background-color: #333;
-        }
-        .focus\:ring-yellow-500:focus {
-            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
-        }
-        .border-red-300 {
-            border-color: #DC2626;
-        }
-        .text-red-600 {
-            color: #EF4444;
-        }
-        .border-green-300 {
-            border-color: #16A34A;
-        }
-        .text-green-600 {
-            color: #22C55E;
-        }
-        .bg-yellow-100 {
-            background-color: #333300;
-        }
-        .text-yellow-800 {
-            color: #FFD700;
-        }
-        .bg-teal-100 {
-            background-color: #003333;
-        }
-        .text-teal-800 {
-            color: #00FFFF;
-        }
-        .bg-rose-100 {
-            background-color: #330000;
-        }
-        .text-rose-800 {
-            color: #FF69B4;
-        }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 400px;
-            }
-        }
+        .bg-yellow-50 { background-color: #222; }
+        .border-yellow-500 { border-color: #007BFF; }
+        .text-stone-700 { color: #F4F4F4; }
+        .text-yellow-800 { color: #007BFF; }
+        .bg-white { background-color: #1A1A1A; color: #F4F4F4; }
+        .text-stone-800 { color: #F4F4F4; }
+        .text-stone-600 { color: #A0A0A0; } /* Adjusted for better contrast */
+        .text-black { color: #F4F4F4; }
+        .bg-yellow-600 { background-color: #007BFF; }
+        .hover\:bg-yellow-700:hover { background-color: #0056B3; }
+        .text-stone-700 { color: #F4F4F4; }
+        .bg-stone-200 { background-color: #333; }
+        .focus\:ring-yellow-500:focus { box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); }
+        .border-red-300 { border-color: #DC2626; }
+        .text-red-600 { color: #EF4444; }
+        .border-green-300 { border-color: #16A34A; }
+        .text-green-600 { color: #22C55E; }
+        .bg-yellow-100 { background-color: #333300; }
+        .text-yellow-800 { color: #FFD700; }
+        .bg-teal-100 { background-color: #003333; }
+        .text-teal-800 { color: #00FFFF; }
+        .bg-rose-100 { background-color: #330000; }
+        .text-rose-800 { color: #FF69B4; }
+        @media (min-width: 768px) { .chart-container { height: 400px; } }
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
             h2 { font-size: 2rem; }
             .section { padding: 3rem 1.5rem; }
-            .hero { min-height: calc(80 * var(--vh)); justify-content: flex-start; padding-top: 5rem; }
+            .hero { min-height: calc(80 * var(--vh)); padding-top: 5rem; }
         }
         @media (max-width: 480px) {
             h1 { font-size: 2.1rem; }
@@ -238,20 +191,15 @@
             .section { padding: 3rem 1rem; }
             .hero { padding-top: 4rem; }
         }
-        /* Using inline font-face rules to prevent FOUT */
-        @font-face{font-family:'Exo 2';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/exo2/v25/7cHmv4okm5zmbtYmK-4W4nIppT4.woff2) format('woff2');}
-        @font-face{font-family:'Exo 2';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/exo2/v25/7cHmv4okm5zmbtYnK-4W4nIppT4.woff2) format('woff2');}
-        @font-face{font-family:'Exo 2';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/exo2/v25/7cHmv4okm5zmbtYoK-4W4nIp.woff2) format('woff2');}
-        @font-face{font-family:'Exo 2';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/exo2/v25/7cHmv4okm5zmbtYsK-4W4nIppT4.woff2) format('woff2');}
     </style>
 </head>
 <body class="antialiased">
 
     <svg style="display:none;">
         <defs>
-            <symbol id="surfable-logo" viewBox="0 0 312 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18.348 1.384c2.472.024 5.142.162 8.01.414 2.868.252 5.67.774 8.406 1.566l-.684 7.308a439.5 439.5 0 0 0-7.434-.18 494.062 494.062 0 0 0-8.334-.072c-1.344 0-2.484.042-3.42.126-.936.084-1.692.276-2.268.576-.576.3-.99.768-1.242 1.404-.252.636-.378 1.506-.378 2.61 0 1.704.396 2.94 1.188 3.708.792.768 2.16 1.452 4.104 2.052l9.54 3.132c3.984 1.344 6.744 3.168 8.28 5.472 1.536 2.304 2.304 5.328 2.304 9.072 0 2.832-.33 5.178-.99 7.038-.66 1.86-1.716 3.318-3.168 4.374-1.452 1.056-3.354 1.812-5.706 2.268-2.352.456-5.22.684-8.604.684-1.656 0-3.99-.102-7.002-.306-3.012-.204-6.45-.738-10.314-1.602l.684-7.812c2.856.072 5.316.144 7.38.216 2.064.072 3.846.114 5.346.126 1.5.012 2.802.018 3.906.018 1.944 0 3.456-.12 4.536-.36 1.08-.24 1.836-.714 2.268-1.422.432-.708.648-1.734.648-3.078 0-1.2-.156-2.142-.468-2.826-.312-.684-.822-1.236-1.53-1.656-.708-.42-1.65-.798-2.826-1.134L10.5 29.644c-3.816-1.368-6.51-3.18-8.082-5.436C.846 21.952.06 18.964.06 15.244c0-2.856.348-5.19 1.044-7.002C1.8 6.43 2.874 5.026 4.326 4.03c1.452-.996 3.336-1.686 5.652-2.07 2.316-.384 5.106-.576 8.37-.576zM53.916 16.468v23.364c-.024 1.488.288 2.55.936 3.186.648.636 1.704.954 3.168.954 1.464 0 2.934-.276 4.41-.828 1.476-.552 3.306-1.428 5.49-2.628l.828 5.832c-2.592 2.208-5.13 3.864-7.614 4.968s-5.058 1.656-7.722 1.656c-6.744 0-10.116-3.288-10.116-9.864v-26.64h10.62zm23.544 0V52h-8.388l-1.224-6.984-1.044-.972V16.468H77.46zM94.452 16.468l1.332 7.02 1.008.972V52h-10.62V16.468h8.28zm17.352-.936-1.008 9.792h-2.916c-1.68 0-3.438.24-5.274.72-1.836.48-4.146 1.212-6.93 2.196l-.684-5.976c2.472-2.184 4.986-3.852 7.542-5.004 2.556-1.152 5.034-1.728 7.434-1.728h1.836zM131.748.124c.864 0 1.998.024 3.402.072 1.404.048 2.844.126 4.32.234 1.476.108 2.742.258 3.798.45l-.972 6.804h-6.768c-1.824 0-3.09.366-3.798 1.098-.708.732-1.062 1.974-1.062 3.726V52h-10.656V11.14c0-2.232.378-4.17 1.134-5.814.756-1.644 1.992-2.922 3.708-3.834C126.57.58 128.868.124 131.748.124zm8.82 16.344v6.948H113.82v-6.588l6.408-.36h20.34zM164.472 15.532c3 0 5.532.396 7.596 1.188 2.064.792 3.63 2.13 4.698 4.014 1.068 1.884 1.602 4.47 1.602 7.758V52h-8.424l-1.512-7.668-.72-1.116v-14.76c-.024-1.704-.432-2.934-1.224-3.69-.792-.756-2.28-1.134-4.464-1.134-1.848 0-4.14.06-6.876.18-2.736.12-5.544.276-8.424.468l-.972-7.056a91.656 91.656 0 0 1 5.94-.846c2.232-.252 4.476-.456 6.732-.612a88.624 88.624 0 0 1 6.048-.234zm9.54 14.616-.072 5.94-15.84.036c-1.296.024-2.226.348-2.79.972-.564.624-.846 1.476-.846 2.556v1.692c0 1.224.342 2.154 1.026 2.79.684.636 1.758.954 3.222.954 1.248 0 2.61-.264 4.086-.792 1.476-.528 2.934-1.272 4.374-2.232a19.808 19.808 0 0 0 3.852-3.348v4.572c-.432.744-1.074 1.65-1.926 2.718-.852 1.068-1.926 2.124-3.222 3.168s-2.808 1.914-4.536 2.61c-1.728.696-3.696 1.044-5.904 1.044-2.136 0-4.074-.378-5.814-1.134-1.74-.756-3.114-1.878-4.122-3.366-1.008-1.488-1.512-3.324-1.512-5.508v-3.708c0-2.808.96-5.004 2.88-6.588 1.92-1.584 4.56-2.376 7.92-2.376h19.224zM251.144 1.6v39.024c0 1.224.36 2.136 1.08 2.736.72.6 1.764.9 3.132.9h2.916l1.188 7.164c-.576.312-1.392.57-2.448.774-1.056.204-2.136.36-3.24.468-1.104.108-2.04.162-2.808.162-3.192 0-5.718-.828-7.578-2.484-1.86-1.656-2.79-3.996-2.79-7.02V1.6h10.548z" fill="#FFF" fill-rule="nonzero"/><path d="M196.552 54.434V.474h11.032l-.153 43.892c-.235 4.246-.41 6.305-.523 6.175l-.391 1.875c-.166.769-.469 1.297-.908 1.586-.439.288-1.014.432-1.726.432h-7.331z" fill="#FFF"/><path d="M207.5 36.679c-10.48-5.971-18.856-6.147-19.182-.934-.455 7.283 4.847 16.34 12.468 4.114.215 14.747-15.411 21.031-18.77 1.017-1.288-7.67 0-12.016 2.045-14.574 4.634-5.796 21.426 4.068 23.439 10.377zm29.636-9.35c2.03 11.373 0 17.817-3.225 21.609-7.308 8.594-33.787-6.031-36.962-15.386 16.526 8.853 29.735 9.114 30.248 1.385.717-10.799-7.642-24.228-19.66-6.1-.34-21.867 24.302-31.185 29.599-1.508z" fill="#007BFF"/><path d="M280.88 15.532c6.024 0 10.338 1.02 12.942 3.06 2.604 2.04 3.918 5.064 3.942 9.072.048 3.24-.774 5.67-2.466 7.29-1.692 1.62-4.59 2.43-8.694 2.43h-19.908v-5.94h16.992c1.608 0 2.64-.348 3.096-1.044.456-.696.684-1.668.684-2.916-.024-1.704-.504-2.88-1.44-3.528-.936-.648-2.532-.972-4.788-.972-1.968-.024-3.498.234-4.59.774-1.092.54-1.854 1.554-2.286 3.042-.432 1.488-.648 3.66-.648 6.516 0 2.976.264 5.268.792 6.876.528 1.608 1.428 2.724 2.7 3.348 1.272.624 3.024.936 5.256.936 1.656 0 3.696-.066 6.12-.198a114.3 114.3 0 0 0 7.272-.63l1.008 6.588c-1.392.648-2.97 1.164-4.734 1.548-1.764.384-3.582.66-5.454.828a60.846 60.846 0 0 1-5.436.252c-4.512 0-8.136-.654-10.872-1.962-2.736-1.308-4.716-3.33-5.94-6.066-1.224-2.736-1.836-6.24-1.836-10.512 0-4.68.618-8.388 1.854-11.124 1.236-2.736 3.198-4.698 5.886-5.886 2.688-1.188 6.204-1.782 10.548-1.782z" fill="#FFF" fill-rule="nonzero"/>
-            </symbol>
+        <symbol id="surfable-logo" viewBox="0 0 312 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18.348 1.384c2.472.024 5.142.162 8.01.414 2.868.252 5.67.774 8.406 1.566l-.684 7.308a439.5 439.5 0 0 0-7.434-.18 494.062 494.062 0 0 0-8.334-.072c-1.344 0-2.484.042-3.42.126-.936.084-1.692.276-2.268.576-.576.3-.99.768-1.242 1.404-.252.636-.378 1.506-.378 2.61 0 1.704.396 2.94 1.188 3.708.792.768 2.16 1.452 4.104 2.052l9.54 3.132c3.984 1.344 6.744 3.168 8.28 5.472 1.536 2.304 2.304 5.328 2.304 9.072 0 2.832-.33 5.178-.99 7.038-.66 1.86-1.716 3.318-3.168 4.374-1.452 1.056-3.354 1.812-5.706 2.268-2.352.456-5.22.684-8.604.684-1.656 0-3.99-.102-7.002-.306-3.012-.204-6.45-.738-10.314-1.602l.684-7.812c2.856.072 5.316.144 7.38.216 2.064.072 3.846.114 5.346.126 1.5.012 2.802.018 3.906.018 1.944 0 3.456-.12 4.536-.36 1.08-.24 1.836-.714 2.268-1.422.432-.708.648-1.734.648-3.078 0-1.2-.156-2.142-.468-2.826-.312-.684-.822-1.236-1.53-1.656-.708-.42-1.65-.798-2.826-1.134L10.5 29.644c-3.816-1.368-6.51-3.18-8.082-5.436C.846 21.952.06 18.964.06 15.244c0-2.856.348-5.19 1.044-7.002C1.8 6.43 2.874 5.026 4.326 4.03c1.452-.996 3.336-1.686 5.652-2.07 2.316-.384 5.106-.576 8.37-.576zM53.916 16.468v23.364c-.024 1.488.288 2.55.936 3.186.648.636 1.704.954 3.168.954 1.464 0 2.934-.276 4.41-.828 1.476-.552 3.306-1.428 5.49-2.628l.828 5.832c-2.592 2.208-5.13 3.864-7.614 4.968s-5.058 1.656-7.722 1.656c-6.744 0-10.116-3.288-10.116-9.864v-26.64h10.62zm23.544 0V52h-8.388l-1.224-6.984-1.044-.972V16.468H77.46zM94.452 16.468l1.332 7.02 1.008.972V52h-10.62V16.468h8.28zm17.352-.936-1.008 9.792h-2.916c-1.68 0-3.438.24-5.274.72-1.836.48-4.146 1.212-6.93 2.196l-.684-5.976c2.472-2.184 4.986-3.852 7.542-5.004 2.556-1.152 5.034-1.728 7.434-1.728h1.836zM131.748.124c.864 0 1.998.024 3.402.072 1.404.048 2.844.126 4.32.234 1.476.108 2.742.258 3.798.45l-.972 6.804h-6.768c-1.824 0-3.09.366-3.798 1.098-.708.732-1.062 1.974-1.062 3.726V52h-10.656V11.14c0-2.232.378-4.17 1.134-5.814.756-1.644 1.992-2.922 3.708-3.834C126.57.58 128.868.124 131.748.124zm8.82 16.344v6.948H113.82v-6.588l6.408-.36h20.34zM164.472 15.532c3 0 5.532.396 7.596 1.188 2.064.792 3.63 2.13 4.698 4.014 1.068 1.884 1.602 4.47 1.602 7.758V52h-8.424l-1.512-7.668-.72-1.116v-14.76c-.024-1.704-.432-2.934-1.224-3.69-.792-.756-2.28-1.134-4.464-1.134-1.848 0-4.14.06-6.876.18-2.736.12-5.544.276-8.424.468l-.972-7.056a91.656 91.656 0 0 1 5.94-.846c2.232-.252 4.476-.456 6.732-.612a88.624 88.624 0 0 1 6.048-.234zm9.54 14.616-.072 5.94-15.84.036c-1.296.024-2.226.348-2.79.972-.564.624-.846 1.476-.846 2.556v1.692c0 1.224.342 2.154 1.026 2.79.684.636 1.758.954 3.222.954 1.248 0 2.61-.264 4.086-.792 1.476-.528 2.934-1.272 4.374-2.232a19.808 19.808 0 0 0 3.852-3.348v4.572c-.432.744-1.074 1.65-1.926 2.718-.852 1.068-1.926 2.124-3.222 3.168s-2.808 1.914-4.536 2.61c-1.728.696-3.696 1.044-5.904 1.044-2.136 0-4.074-.378-5.814-1.134-1.74-.756-3.114-1.878-4.122-3.366-1.008-1.488-1.512-3.324-1.512-5.508v-3.708c0-2.808.96-5.004 2.88-6.588 1.92-1.584 4.56-2.376 7.92-2.376h19.224zM251.144 1.6v39.024c0 1.224.36 2.136 1.08 2.736.72.6 1.764.9 3.132.9h2.916l1.188 7.164c-.576.312-1.392.57-2.448.774-1.056.204-2.136.36-3.24.468-1.104.108-2.04.162-2.808.162-3.192 0-5.718-.828-7.578-2.484-1.86-1.656-2.79-3.996-2.79-7.02V1.6h10.548z" fill="#FFF" fill-rule="nonzero"/><path d="M196.552 54.434V.474h11.032l-.153 43.892c-.235 4.246-.41 6.305-.523 6.175l-.391 1.875c-.166.769-.469 1.297-.908 1.586-.439.288-1.014.432-1.726.432h-7.331z" fill="#FFF"/><path d="M207.5 36.679c-10.48-5.971-18.856-6.147-19.182-.934-.455 7.283 4.847 16.34 12.468 4.114.215 14.747-15.411 21.031-18.77 1.017-1.288-7.67 0-12.016 2.045-14.574 4.634-5.796 21.426 4.068 23.439 10.377zm29.636-9.35c2.03 11.373 0 17.817-3.225 21.609-7.308 8.594-33.787-6.031-36.962-15.386 16.526 8.853 29.735 9.114 30.248 1.385.717-10.799-7.642-24.228-19.66-6.1-.34-21.867 24.302-31.185 29.599-1.508z" fill="#007BFF"/><path d="M280.88 15.532c6.024 0 10.338 1.02 12.942 3.06 2.604 2.04 3.918 5.064 3.942 9.072.048 3.24-.774 5.67-2.466 7.29-1.692 1.62-4.59 2.43-8.694 2.43h-19.908v-5.94h16.992c1.608 0 2.64-.348 3.096-1.044.456-.696.684-1.668.684-2.916-.024-1.704-.504-2.88-1.44-3.528-.936-.648-2.532-.972-4.788-.972-1.968-.024-3.498.234-4.59.774-1.092.54-1.854 1.554-2.286 3.042-.432 1.488-.648 3.66-.648 6.516 0 2.976.264 5.268.792 6.876.528 1.608 1.428 2.724 2.7 3.348 1.272.624 3.024.936 5.256.936 1.656 0 3.696-.066 6.12-.198a114.3 114.3 0 0 0 7.272-.63l1.008 6.588c-1.392.648-2.97 1.164-4.734 1.548-1.764.384-3.582.66-5.454.828a60.846 60.846 0 0 1-5.436.252c-4.512 0-8.136-.654-10.872-1.962-2.736-1.308-4.716-3.33-5.94-6.066-1.224-2.736-1.836-6.24-1.836-10.512 0-4.68.618-8.388 1.854-11.124 1.236-2.736 3.198-4.698 5.886-5.886 2.688-1.188 6.204-1.782 10.548-1.782z" fill="#FFF" fill-rule="nonzero"/>
+        </symbol>
         </defs>
     </svg>
 
@@ -260,7 +208,7 @@
             <div class="flex items-center justify-between h-16">
                 <div class="flex-shrink-0">
                     <a href="#hero" class="flex items-center">
-                        <span class="text-xl font-bold text-F4F4F4 hidden sm:block">NEXT <span class="accent-color">LEAP</span> IN ENERGY</span>
+                        <span class="text-xl font-bold text-F4F4F4 block sm:block">NEXT <span class="accent-color">LEAP</span> IN ENERGY</span>
                     </a>
                 </div>
                 <div class="hidden md:block">
@@ -308,20 +256,20 @@
         </section>
         <section id="basics" class="section bg-black">
             <div class="container-content">
-                <h4 class="text-xl font-semibold text-F4F4F4">Battery 101: The Playground Analogy</h4>
+                <h3 class="text-xl font-semibold text-F4F4F4">Battery 101: The Playground Analogy</h3>
                 <p class="mt-4 text-lg text-neutral-400">To understand new battery inventions, let's start with the three basic parts of any battery. Think of it like a playground for electricity. Click on each part to learn more about its role.</p>
             </div>
             <div class="mt-12 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
                 <div id="anode-explainer" class="text-center p-6 bg-neutral-800 rounded-xl shadow-lg interactive-card cursor-pointer">
-                    <h3 class="text-xl font-semibold accent-color">Anode (-)</h3>
+                    <h4 class="text-xl font-semibold accent-color">Anode (-)</h4>
                     <p class="mt-2 text-neutral-400">The 'top of the slide' where energy is stored.</p>
                 </div>
                 <div id="electrolyte-explainer" class="text-center p-6 bg-neutral-800 rounded-xl shadow-lg interactive-card cursor-pointer">
-                     <h3 class="text-xl font-semibold accent-color">Electrolyte</h3>
+                     <h4 class="text-xl font-semibold accent-color">Electrolyte</h4>
                     <p class="mt-2 text-neutral-400">The 'slide' itself, a highway for energy particles.</p>
                 </div>
                 <div id="cathode-explainer" class="text-center p-6 bg-neutral-800 rounded-xl shadow-lg interactive-card cursor-pointer">
-                    <h3 class="text-xl font-semibold accent-color">Cathode (+)</h3>
+                    <h4 class="text-xl font-semibold accent-color">Cathode (+)</h4>
                     <p class="mt-2 text-neutral-400">The 'bottom of the slide' where energy goes.</p>
                 </div>
             </div>
@@ -345,7 +293,7 @@
             </div>
 
             <div class="container-content mt-16">
-                <h3 class="text-xl font-semibold text-F4F4F4">The Bold Promises of Glass Batteries</h3>
+                <h2 class="text-xl font-semibold text-F4F4F4">The Bold Promises of Glass Batteries</h2>
                 <p class="mt-4 text-lg text-neutral-400">The switch to a glass electrolyte isn't just about safety; it unlocks a new level of performance. The chart below visualizes the claimed advantages of the glass battery over traditional lithium-ion technology. Hover over the bars for more context, especially if you're an investor or researcher looking for details.</p>
                 <div class="mt-12">
                     <div class="chart-container">
@@ -355,7 +303,7 @@
             </div>
 
             <div class="container-content mt-16">
-                <h3 class="text-F4F4F4 mb-6">The Goodenough Recipe: How It's Made</h3>
+                <h2 class="text-F4F4F4 mb-6">The Goodenough Recipe: How It's Made</h2>
                 <p class="mt-4 text-lg text-neutral-400">Goodenough's proposed design uses simple, abundant materials. This section shows the components of a complete battery cell, ideal for understanding the basics of its construction.</p>
                 <div class="mt-12 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="bg-neutral-800 p-6 rounded-xl shadow-lg text-center">
@@ -482,7 +430,7 @@
             <div class="mt-12 max-w-4xl mx-auto bg-neutral-800 rounded-xl shadow-lg overflow-hidden">
                 <div class="md:flex">
                     <div class="p-8">
-                        <div class="uppercase tracking-wide text-xl accent-color font-semibold">The Core Paradox of Goodenough's Initial Design</div>
+                        <h3 class="uppercase tracking-wide text-xl accent-color font-semibold">The Core Paradox of Goodenough's Initial Design</h3>
                         <p class="block mt-1 text-lg font-medium text-F4F4F4">How can a battery work with two identical electrodes?</p>
                         <p class="mt-2 text-neutral-400">The initial paper described a battery with pure lithium on both the anode and cathode side. This seemed to defy basic battery physics, as a voltage difference is needed to generate power. It's like having a slide that's perfectly flat—nothing would move.</p>
                         <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -500,7 +448,7 @@
             </div>
 
             <div class="container-content mt-16">
-                <h3 class="text-xl font-semibold text-F4F4F4 mb-6">The Global Race for Solid-State Batteries</h3>
+                <h2 class="text-xl font-semibold text-F4F4F4">The Global Race for Solid-State Batteries</h2>
                 <p class="mt-4 text-lg text-neutral-400">Goodenough's glass battery is part of a bigger global effort to develop safe, solid-state batteries. Glass is just one promising material; others like polymers, ceramics, and sulfides are also being explored. Click on each type to learn about the competition and the ongoing challenges.</p>
             </div>
             <div class="mt-12 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
