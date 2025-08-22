@@ -23,10 +23,15 @@
     <meta name="theme-color" content="#ffffff">
     <title>Surfable — Next Leap in Energy</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="canonical" href="https://surfable.ca/" />
+    <!-- Chosen Palette: Dark Theme with #007BFF accent -->
+    <!-- Application Structure Plan: The application is structured into thematic sections: Home, Our Innovation, Paradigm Shift, Battery Challenges, Scaffolding, Graphene Future, Manufacturing, and Computational Design. This structure builds from high-level company vision to detailed scientific and technical explanations. Navigation is handled by a sticky header with smooth scrolling. Interactive cards and Chart.js visualizations are used to present complex data and insights, making the report content easily digestible and explorable within the Surfable brand aesthetic. This integrated structure allows users to seamlessly navigate between marketing and technical content. -->
+    <!-- Visualization & Content Choices: 1) Battery Challenges: Text cards to highlight key issues. 2) Fabrication Techniques Comparison: Bar chart (Chart.js) with interactive buttons to switch between scalability and precision metrics, offering a dynamic comparison of manufacturing methods. 3) Material Properties Chart: Radar chart (Chart.js) to visually compare Graphene, GO, and rGO across multiple properties, providing intuitive material insights. 4) Cost of Graphene Chart: Bar chart (Chart.js) to illustrate cost differences, emphasizing commercial viability challenges. All charts are integrated into dark-themed containers for visual consistency and responsiveness. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'Exo 2', sans-serif;
@@ -156,6 +161,24 @@
         .text-con {
             color: #EF4444; /* Red for disadvantages */
         }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+            background-color: #1A1A1A; /* Dark background for charts */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 123, 255, 0.1), 0 2px 4px -1px rgba(0, 123, 255, 0.06);
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
             h2 { font-size: 2rem; }
@@ -168,6 +191,13 @@
             .logo { height: 20px; margin-bottom: 2rem; }
             .section { padding: 3rem 1rem; }
             .hero { padding-top: 4rem; }
+        }
+        @keyframes flow {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            25% { transform: translate(40px, 60px) scale(1.1); }
+            50% { transform: translate(-30px, -50px) scale(1); }
+            75% { transform: translate(50px, -20px) scale(0.9); }
+            100% { transform: translate(0, 0) scale(1); opacity: 1; }
         }
     </style>
 </head>
@@ -194,9 +224,11 @@
                         <a href="#hero" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-[#007BFF]">Home</a>
                         <a href="#patent-innovation" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-[#007BFF]">Our Innovation</a>
                         <a href="#paradigm-shift" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-[#007BFF]">Paradigm Shift</a>
+                        <a href="#battery-challenges" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-[#007BFF]">Battery Challenges</a>
                         <a href="#scaffolding-framework" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-[#007BFF]">Scaffolding</a>
                         <a href="#graphene-future" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-[#007BFF]">Graphene Future</a>
                         <a href="#manufacturing" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-[#007BFF]">Manufacturing</a>
+                        <a href="#computational-design" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-[#007BFF]">Computational Design</a>
                     </div>
                 </div>
                 <div class="md:hidden">
@@ -214,9 +246,11 @@
                 <a href="#hero" class="nav-link block px-3 py-2 rounded-md text-base font-medium hover:text-[#007BFF]">Home</a>
                 <a href="#patent-innovation" class="nav-link block px-3 py-2 rounded-md text-base font-medium hover:text-[#007BFF]">Our Innovation</a>
                 <a href="#paradigm-shift" class="nav-link block px-3 py-2 rounded-md text-base font-medium hover:text-[#007BFF]">Paradigm Shift</a>
+                <a href="#battery-challenges" class="nav-link block px-3 py-2 rounded-md text-base font-medium hover:text-[#007BFF]">Battery Challenges</a>
                 <a href="#scaffolding-framework" class="nav-link block px-3 py-2 rounded-md text-base font-medium hover:text-[#007BFF]">Scaffolding</a>
                 <a href="#graphene-future" class="nav-link block px-3 py-2 rounded-md text-base font-medium hover:text-[#007BFF]">Graphene Future</a>
                 <a href="#manufacturing" class="nav-link block px-3 py-2 rounded-md text-base font-medium hover:text-[#007BFF]">Manufacturing</a>
+                <a href="#computational-design" class="nav-link block px-3 py-2 rounded-md text-base font-medium hover:text-[#007BFF]">Computational Design</a>
             </div>
         </div>
     </header>
@@ -257,7 +291,34 @@
             </div>
         </section>
 
-        <section id="scaffolding-framework" class="section mid">
+        <section id="battery-challenges" class="section mid">
+            <div class="container-content">
+                <h2>The Multivalent Battery Challenge</h2>
+                <p class="text-neutral-300 text-lg mb-12">
+                    Multivalent batteries, using abundant elements like magnesium, promise higher energy density and improved safety. However, their development is hindered by the high charge density of multivalent ions, which leads to several critical issues. This section breaks down these challenges and how a crumpled graphene framework offers a strategic solution.
+                </p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-neutral-900 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow border border-neutral-700">
+                        <h3 class="font-semibold text-lg mb-2 text-F4F4F4">Sluggish Ion Kinetics</h3>
+                        <p class="text-neutral-400">High charge density causes slow ion diffusion. Crumpled graphene's porous structure increases the ion-accessible surface area, accelerating transport.</p>
+                    </div>
+                    <div class="bg-neutral-900 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow border border-neutral-700">
+                        <h3 class="font-semibold text-lg mb-2 text-F4F4F4">Anode Passivation</h3>
+                        <p class="text-neutral-400">A resistive layer forms on the anode, blocking ion conduction. A structured graphene scaffold can support a stable, compliant solid electrolyte.</p>
+                    </div>
+                    <div class="bg-neutral-900 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow border border-neutral-700">
+                        <h3 class="font-semibold text-lg mb-2 text-F4F4F4">Anode Instability</h3>
+                        <p class="text-neutral-400">Volume changes during cycling can destroy the anode. Graphene's folds and wrinkles buffer this expansion, maintaining structural integrity.</p>
+                    </div>
+                    <div class="bg-neutral-900 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow border border-neutral-700">
+                        <h3 class="font-semibold text-lg mb-2 text-F4F4F4">Electrolyte Safety</h3>
+                        <p class="text-neutral-400">Traditional liquid electrolytes are flammable. A solid-scaffold hybrid eliminates volatile liquids, enhancing safety.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="scaffolding-framework" class="section bg-black">
             <div class="container-content">
                 <h2>The Solid Scaffolding Framework: A Proven Concept</h2>
                 <p class="text-neutral-300 text-lg mb-8">This isn't just a theory. Recent breakthroughs in aluminum-ion batteries have provided powerful, real-world proof that the scaffolding framework is the most viable path to high-performance solid-state energy storage.</p>
@@ -294,12 +355,12 @@
             </div>
         </section>
 
-        <section id="graphene-future" class="section bg-black">
+        <section id="graphene-future" class="section mid">
             <div class="container-content">
                 <h2>The Future: Crumbled Nano-Graphene Scaffolds</h2>
                 <p class="text-neutral-300 text-lg mb-8">The success of the AlF3 framework is the blueprint for the next frontier: Surfable's vision of a crumbled nano-graphene scaffold. Graphene's immense surface area and unique structure make it the ultimate candidate for a high-performance battery framework.</p>
                 
-                <div class="bg-neutral-900 p-8 rounded-lg border border-neutral-700">
+                <div class="bg-neutral-900 p-8 rounded-lg border border-neutral-700 mb-12">
                     <h3 class="accent-color">Visualizing the Concept</h3>
                     <p class="text-neutral-400 mb-6">Instead of flat sheets that can restack and block ion flow, crumpled nano-graphene forms porous, sphere-like particles. This creates a 3D "ion highway" with tailored channels, perfect for the rapid movement of large aluminum-based ions.</p>
                     <!-- HTML/CSS Diagram -->
@@ -319,15 +380,26 @@
                         <div class="absolute inset-8 border border-neutral-700 rounded-full"></div>
                         <p class="absolute bottom-4 text-xs text-blue-300">Ionic Liquid Fills Pores (Ion Highway)</p>
                     </div>
-                    <style>
-                        @keyframes flow {
-                            0% { transform: translate(0, 0) scale(1); opacity: 1; }
-                            25% { transform: translate(40px, 60px) scale(1.1); }
-                            50% { transform: translate(-30px, -50px) scale(1); }
-                            75% { transform: translate(50px, -20px) scale(0.9); }
-                            100% { transform: translate(0, 0) scale(1); opacity: 1; }
-                        }
-                    </style>
+                </div>
+
+                <div class="bg-neutral-900 p-8 rounded-lg shadow-lg mb-12 border border-neutral-700">
+                    <h3 class="text-2xl font-semibold mb-4 text-center text-F4F4F4">Material Properties Comparison</h3>
+                    <p class="text-center text-neutral-400 mb-6">
+                        The choice between **Graphene**, **Graphene Oxide (GO)**, and **Reduced Graphene Oxide (rGO)** is fundamental. Each has a unique profile of conductivity, functionality, and dispersibility. This chart visualizes the trade-offs.
+                    </p>
+                    <div class="chart-container h-96">
+                        <canvas id="materialsChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-neutral-900 p-8 rounded-lg shadow-lg border border-neutral-700">
+                    <h3 class="text-2xl font-semibold mb-4 text-center text-F4F4F4">The Cost of Graphene Derivatives</h3>
+                    <p class="text-center text-neutral-400 mb-6">
+                        Commercial viability is heavily influenced by material cost. High-quality CVD graphene is orders of magnitude more expensive than graphene oxide, making scalable production a significant challenge.
+                    </p>
+                    <div class="chart-container h-96">
+                        <canvas id="costChart"></canvas>
+                    </div>
                 </div>
 
                 <div class="mt-12 text-left">
@@ -360,11 +432,11 @@
             </div>
         </section>
 
-        <section id="manufacturing" class="section mid">
+        <section id="manufacturing" class="section bg-black">
             <div class="container-content">
                 <h2>Manufacturing the Future: How It Can Be Made</h2>
                 <p class="text-neutral-300 text-lg mb-8">A revolutionary battery is only viable if it can be manufactured affordably and at scale. Traditional high-temperature methods are too costly and complex. The future lies in advanced, low-temperature techniques that enable the creation of these sophisticated hybrid architectures.</p>
-                <table class="table-custom">
+                <table class="table-custom mb-12">
                     <thead>
                         <tr>
                             <th>Fabrication Technique</th>
@@ -390,6 +462,43 @@
                         </tr>
                     </tbody>
                 </table>
+
+                <div class="bg-neutral-900 p-8 rounded-lg shadow-lg border border-neutral-700">
+                    <h3 class="text-2xl font-semibold mb-4 text-center text-F4F4F4">Comparing Fabrication Methods for Porous Graphene</h3>
+                    <p class="text-center text-neutral-400 mb-6">
+                        Creating a scaffold that allows ions to pass while blocking electrons requires sophisticated fabrication methods. The choice of technique involves a critical trade-off between **scalability** and **precision**. This interactive chart allows you to compare the leading methods.
+                    </p>
+                    <div class="flex justify-center mb-6 space-x-4">
+                        <button id="scalabilityBtn" class="px-4 py-2 bg-[#007BFF] text-white rounded-md shadow-sm">Scalability</button>
+                        <button id="precisionBtn" class="px-4 py-2 bg-neutral-800 text-neutral-300 rounded-md shadow-sm">Precision (Pore Size)</button>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="fabricationChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="computational-design" class="section mid">
+            <div class="container-content">
+                <h2>The Accelerator: Computational Design</h2>
+                <p class="text-neutral-300 text-lg mb-12">
+                    Traditional trial-and-error is too slow and expensive. Our Materials Scientist Simulator (MSS) accelerates discovery by integrating physics-based simulations with AI. This section outlines the key computational techniques that power this new paradigm of materials research.
+                </p>
+                <div class="space-y-8">
+                    <div class="bg-neutral-900 p-6 rounded-lg shadow-md border border-neutral-700">
+                        <h3 class="font-semibold text-lg mb-2 text-F4F4F4">Multiscale Simulation (DFT & MD)</h3>
+                        <p class="text-neutral-400">Density Functional Theory (DFT) and Molecular Dynamics (MD) provide a virtual lab to predict material properties at the atomic level, from electronic structure to ion diffusion dynamics, before synthesis.</p>
+                    </div>
+                    <div class="bg-neutral-900 p-6 rounded-lg shadow-md border border-neutral-700">
+                        <h3 class="font-semibold text-lg mb-2 text-F4F4F4">AI-Assisted Inverse Design</h3>
+                        <p class="text-neutral-400">Instead of testing known materials, we define desired properties and use generative AI models (VAEs, GANs) to design novel material structures from scratch, exploring a vast, untapped design space.</p>
+                    </div>
+                    <div class="bg-neutral-900 p-6 rounded-lg shadow-md border border-neutral-700">
+                        <h3 class="font-semibold text-lg mb-2 text-F4F4F4">Physics-Informed Machine Learning (UDEs)</h3>
+                        <p class="text-neutral-400">Universal Differential Equations (UDEs) combine known physical laws with neural networks. The network learns the "residuals" or unmodeled physics, creating highly accurate and data-efficient models that can predict long-term battery performance.</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -463,6 +572,274 @@
                     icon.classList.remove('rotate-180');
                 }
             }
+
+            // Chart.js data and logic
+            const fabricationData = {
+                labels: ['Freeze-Casting', 'Sacrificial Templating', 'CVD', 'Plasma Etching', 'Laser Ablation'],
+                scalability: [9, 6, 4, 2, 5],
+                precision: [3, 7, 9, 10, 6] 
+            };
+
+            const fabricationCtx = document.getElementById('fabricationChart').getContext('2d');
+            let fabricationChart = new Chart(fabricationCtx, {
+                type: 'bar',
+                data: {
+                    labels: fabricationData.labels,
+                    datasets: [{
+                        label: 'Scalability (1-10)',
+                        data: fabricationData.scalability,
+                        backgroundColor: 'rgba(0, 123, 255, 0.6)', // Surfable accent blue
+                        borderColor: 'rgba(0, 123, 255, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 10,
+                            ticks: {
+                                color: '#F4F4F4' // Light color for ticks on dark background
+                            },
+                            grid: {
+                                color: '#333' // Darker grid lines
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#F4F4F4'
+                            },
+                            grid: {
+                                color: '#333'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#F4F4F4', // Light color for legend text
+                                font: {
+                                    family: 'Exo 2' // Set font to Exo 2
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += context.parsed.y;
+                                    }
+                                    return label;
+                                }
+                            },
+                            titleFont: {
+                                family: 'Exo 2'
+                            },
+                            bodyFont: {
+                                family: 'Exo 2'
+                            }
+                        }
+                    }
+                }
+            });
+
+            const scalabilityBtn = document.getElementById('scalabilityBtn');
+            const precisionBtn = document.getElementById('precisionBtn');
+
+            scalabilityBtn.addEventListener('click', () => {
+                updateFabricationChart('scalability');
+                scalabilityBtn.classList.add('bg-[#007BFF]', 'text-white');
+                scalabilityBtn.classList.remove('bg-neutral-800', 'text-neutral-300');
+                precisionBtn.classList.add('bg-neutral-800', 'text-neutral-300');
+                precisionBtn.classList.remove('bg-[#007BFF]', 'text-white');
+            });
+
+            precisionBtn.addEventListener('click', () => {
+                updateFabricationChart('precision');
+                precisionBtn.classList.add('bg-[#007BFF]', 'text-white');
+                precisionBtn.classList.remove('bg-neutral-800', 'text-neutral-300');
+                scalabilityBtn.classList.add('bg-neutral-800', 'text-neutral-300');
+                scalabilityBtn.classList.remove('bg-[#007BFF]', 'text-white');
+            });
+
+            function updateFabricationChart(metric) {
+                const newData = metric === 'scalability' ? fabricationData.scalability : fabricationData.precision;
+                const newLabel = metric === 'scalability' ? 'Scalability (1-10)' : 'Precision (1-10, lower is better)';
+                const newColor = metric === 'scalability' ? 'rgba(0, 123, 255, 0.6)' : 'rgba(239, 68, 68, 0.6)'; // Accent blue or a contrasting red
+                const newBorderColor = metric === 'scalability' ? 'rgba(0, 123, 255, 1)' : 'rgba(239, 68, 68, 1)';
+                
+                fabricationChart.data.datasets[0].data = newData;
+                fabricationChart.data.datasets[0].label = newLabel;
+                fabricationChart.data.datasets[0].backgroundColor = newColor;
+                fabricationChart.data.datasets[0].borderColor = newBorderColor;
+                fabricationChart.update();
+            }
+
+            const materialsCtx = document.getElementById('materialsChart').getContext('2d');
+            new Chart(materialsCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['Conductivity', 'Surface Functionality', 'Dispersibility', 'Mechanical Strength'],
+                    datasets: [
+                        {
+                            label: 'Graphene',
+                            data: [10, 2, 2, 10],
+                            backgroundColor: 'rgba(0, 123, 255, 0.2)', // Accent blue
+                            borderColor: 'rgb(0, 123, 255)',
+                            pointBackgroundColor: 'rgb(0, 123, 255)',
+                        },
+                        {
+                            label: 'Graphene Oxide (GO)',
+                            data: [1, 10, 9, 4],
+                            backgroundColor: 'rgba(34, 197, 94, 0.2)', // Green for contrast
+                            borderColor: 'rgb(34, 197, 94)',
+                            pointBackgroundColor: 'rgb(34, 197, 94)',
+                        },
+                        {
+                            label: 'Reduced GO (rGO)',
+                            data: [7, 5, 3, 7],
+                            backgroundColor: 'rgba(255, 159, 64, 0.2)', // Orange for contrast
+                            borderColor: 'rgb(255, 159, 64)',
+                            pointBackgroundColor: 'rgb(255, 159, 64)',
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    elements: {
+                        line: {
+                            borderWidth: 3
+                        }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: {
+                                display: false
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 10,
+                            ticks: {
+                                color: '#F4F4F4'
+                            },
+                            pointLabels: {
+                                color: '#F4F4F4',
+                                font: {
+                                    family: 'Exo 2'
+                                }
+                            },
+                            grid: {
+                                color: '#333'
+                            },
+                            border: {
+                                color: '#333'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#F4F4F4',
+                                font: {
+                                    family: 'Exo 2'
+                                }
+                            }
+                        },
+                        tooltip: {
+                            titleFont: {
+                                family: 'Exo 2'
+                            },
+                            bodyFont: {
+                                family: 'Exo 2'
+                            }
+                        }
+                    }
+                }
+            });
+
+            const costCtx = document.getElementById('costChart').getContext('2d');
+            new Chart(costCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Graphene Oxide (powder)', 'CVD Graphene (high quality)'],
+                    datasets: [{
+                        label: 'Cost per Kilogram ($)',
+                        data: [300, 10000],
+                        backgroundColor: [
+                            'rgba(0, 123, 255, 0.6)',
+                            'rgba(239, 68, 68, 0.6)'
+                        ],
+                        borderColor: [
+                            'rgba(0, 123, 255, 1)',
+                            'rgba(239, 68, 68, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            type: 'logarithmic',
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value, index, values) {
+                                    return '$' + value.toLocaleString();
+                                },
+                                color: '#F4F4F4'
+                            },
+                            grid: {
+                                color: '#333'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#F4F4F4'
+                            },
+                            grid: {
+                                color: '#333'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#F4F4F4',
+                                font: {
+                                    family: 'Exo 2'
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += '$' + context.parsed.y.toLocaleString();
+                                    }
+                                    return label;
+                                }
+                            },
+                            titleFont: {
+                                family: 'Exo 2'
+                            },
+                            bodyFont: {
+                                family: 'Exo 2'
+                            }
+                        }
+                    }
+                }
+            });
         });
     </script>
 </body>
