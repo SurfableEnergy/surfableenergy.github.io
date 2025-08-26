@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Advanced Battery Materials — Surfable Deep Dive">
+    <meta name="description" content="A deep dive into the science of advanced battery materials, including engineered anodes, cathodes, and ionic liquid electrolytes.">
+    <title>Advanced Battery Materials</title>
+    <meta name="keywords" content="Advanced battery materials, Anode and cathode innovations, Ionic liquids, Solid-state electrolytes, Battery energy density, Nanostructuring, Material doping, AuNPs in batteries, Surfable">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://surfable.ca/deep-dive.html">
+    <meta property="og:title" content="Advanced Battery Materials — Surfable Deep Dive">
+    <meta property="og:description" content="A deep dive into the science of advanced battery materials, including engineered anodes, cathodes, and ionic liquid electrolytes.">
+    <meta property="og:image" content="https://surfable.ca/assets/social-preview.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://surfable.ca/deep-dive.html">
+    <meta name="twitter:title" content="Advanced Battery Materials — Surfable Deep Dive">
+    <meta name="twitter:description" content="A deep dive into the science of advanced battery materials, including engineered anodes, cathodes, and ionic liquid electrolytes.">
+    <meta name="twitter:image" content="https://surfable.ca/assets/social-preview.jpg">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+    <link rel="manifest" href="./assets/site.webmanifest">
+    <meta name="msapplication-config" content="./assets/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <title>Surfable — Next Leap in Energy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="canonical" href="https://surfable.ca/deep-dive.html" />
+    <!-- Chosen Palette: Dark Theme with #007BFF accent -->
+    <!-- Application Structure Plan: A single-page dashboard with a persistent top navigation bar for smooth scrolling to thematic sections: Overview, Component Explorer, Advanced Engineering, and Performance Dashboard. This structure was chosen to deconstruct the dense report into user-driven, digestible modules. The Component Explorer is the core interactive element, allowing users to select a battery part (Anode, Cathode, Electrolyte) and dynamically view comparative data and analysis. This non-linear approach enhances usability by letting users focus on their area of interest, rather than following the linear path of the source document. -->
+    <!-- Visualization & Content Choices: 
+        - Overview (Inform): Key stats are presented in high-visibility cards. Goal is to provide a quick summary.
+        - Component Explorer (Compare/Inform): Interactive buttons trigger JS functions to update a bar chart (Chart.js) and associated text. Goal: Direct comparison of material properties (e.g., anode capacity). Justification: An interactive chart is more engaging and clearer for comparison than a static table.
+        - Advanced Engineering (Organize/Explain): A two-column layout with clickable cards to reveal detailed text. Goal: Isolate and explain complex topics (Doping, AuNPs). Justification: Hides complexity until the user requests it, keeping the UI clean.
+        - Performance Dashboard (Compare/Analyze): A primary bar chart (Chart.js) with a dropdown to switch the displayed metric. Goal: Compare different battery chemistries on multiple performance axes. Justification: A single, updatable chart is an efficient use of space and allows for multi-faceted analysis.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background-color: #000;
+            color: #F4F4F4;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        .nav-link {
+            transition: color .3s ease;
+            color: #F4F4F4;
+        }
+        .nav-link.active {
+            color: #007BFF;
+        }
+        .section {
+            padding: 5rem 2rem;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-bottom: 1px solid #222;
+        }
+        .section:last-of-type {
+            border-bottom: none;
+        }
+        .section.mid {
+            background-color: #111;
+        }
+        .container-content {
+            max-width: 840px;
+            width: 100%;
+        }
+        .card {
+            background-color: #1A1A1A;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+        .btn {
+            transition: all 0.3s ease;
+            border-radius: 0.5rem;
+            font-weight: 600;
+        }
+        .btn-primary {
+            background-color: #007BFF;
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background-color: #0060c0;
+        }
+        .btn-secondary {
+            background-color: #2D3748;
+            color: #E2E8F0;
+        }
+        .btn-secondary.active, .btn-secondary:hover {
+            background-color: #4A5568;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+            background-color: #1A1A1A; 
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 123, 255, 0.1), 0 2px 4px -1px rgba(0, 123, 255, 0.06);
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .section { padding: 4rem 1.5rem; }
+            .hero { min-height: 80vh; justify-content: flex-start; padding-top: 5rem; }
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 2.1rem; }
+            .subheading { font-size: 1.1rem; }
+            .logo { height: 20px; margin-bottom: 2rem; }
+            .section { padding: 3rem 1rem; }
+            .hero { padding-top: 4rem; }
+        }
+        h1, h2, h3 {
+            color: #F4F4F4;
+        }
+        .accent-color {
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    
+    <header class="bg-black/80 backdrop-blur-sm sticky top-0 z-50 shadow-lg shadow-blue-500/5">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="#hero" class="flex items-center">
+                        <span class="nav-link text-xl font-bold text-F4F4F4 block sm:block">ADVANCED <span class="accent-color">BATTERY</span> MATERIALS</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a onclick="scrollToSection('explorer')" class="nav-link">Component Explorer</a>
+                    <a onclick="scrollToSection('engineering')" class="nav-link">Advanced Engineering</a>
+                    <a onclick="scrollToSection('performance')" class="nav-link">Performance Dashboard</a>
+                </div>
+                <div class="md:hidden">
+                    <select onchange="scrollToSection(this.value)" class="bg-gray-800 border border-gray-700 text-gray-200 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        <option value="explorer">Explorer</option>
+                        <option value="engineering">Engineering</option>
+                        <option value="performance">Performance</option>
+                    </select>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+         <section id="hero" class="section hero min-h-screen bg-black pt-24 md:pt-32">
+            <h2 class="text-4xl font-bold mb-4">The <span class="accent-color">New</span> Frontier of Energy Storage</h2>
+            <p class="max-w-3xl mx-auto text-lg text-neutral-300 mb-12">
+                The performance of modern batteries is no longer just about the raw materials, but about <span class="accent-color">sophisticated engineering at the atomic scale</span>. This interactive report explores the key innovations in anodes, cathodes, and electrolytes that are pushing the boundaries of what's possible in energy storage.
+            </p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card p-6">
+                    <h3 class="text-2xl font-bold text-neutral-300 mb-2">2.6x Higher Capacity</h3>
+                    <p class="text-neutral-400">High-capacity materials like Tin (Sn) offer a theoretical capacity of 994 mAh/g, more than 2.6 times that of traditional graphite anodes.</p>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-2xl font-bold text-neutral-300 mb-2">>500 Wh/kg</h3>
+                    <p class="text-neutral-400">Next-generation chemistries like Lithium-Sulfur promise theoretical energy densities far exceeding the 150-250 Wh/kg of conventional Lithium-Ion batteries.</p>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-2xl font-bold text-neutral-300 mb-2">Nanoscale Solutions</h3>
+                    <p class="text-neutral-400">Engineering materials like SnO₂ into nanotubes mitigates physical degradation from volume expansion, drastically improving cycle life and performance.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-16 border-neutral-800">
+
+        <section id="explorer" class="mb-20 section bg-black">
+            <h2 class="text-3xl font-bold text-center mb-4">Interactive Component Explorer</h2>
+            <p class="max-w-3xl mx-auto text-lg text-neutral-300 text-center mb-12">
+                A battery's performance is determined by its core components. Select a component below to compare different materials and understand the unique challenges and innovations for each.
+            </p>
+            <div class="flex justify-center space-x-4 mb-8">
+                <button id="btn-anode" class="btn btn-secondary active" onclick="updateExplorer('anode')">Anode</button>
+                <button id="btn-cathode" class="btn btn-secondary" onclick="updateExplorer('cathode')">Cathode</button>
+                <button id="btn-electrolyte" class="btn btn-secondary" onclick="updateExplorer('electrolyte')">Electrolyte</button>
+            </div>
+            <div class="card p-8">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 id="explorer-title" class="text-2xl font-bold mb-4"></h3>
+                        <p id="explorer-text" class="text-neutral-400 leading-relaxed"></p>
+                    </div>
+                    <div class="chart-container h-80 md:h-96">
+                        <canvas id="explorerChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <hr class="my-16 border-neutral-800">
+
+        <section id="engineering" class="mb-20 section bg-black">
+            <h2 class="text-3xl font-bold text-center mb-4">Advanced Material Engineering</h2>
+            <p class="max-w-3xl mx-auto text-lg text-neutral-300 text-center mb-12">
+                Modern materials science has shifted from simple material discovery to precision engineering. Two key strategies—doping and nanoparticle integration—are used to enhance material properties and overcome inherent limitations.
+            </p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card p-8">
+                    <h3 class="text-2xl font-bold mb-3">Strategic Doping</h3>
+                    <p class="text-neutral-400">Doping involves introducing small amounts of other elements into a host material to enhance its properties. For example, doping garnet-type solid-state electrolytes (LLZO) with Tantalum (Ta) significantly improves ionic conductivity. This targeted approach fixes known material deficiencies, like improving the thermal stability of $LiNiO_2$ cathodes by creating ternary oxides like NMC and NCA.</p>
+                </div>
+                <div class="card p-8">
+                     <h3 class="text-2xl font-bold mb-3">Gold Nanoparticles (AuNPs)</h3>
+                     <p class="text-neutral-400">AuNPs are a multifunctional additive that can solve several problems at once. Their high conductivity creates efficient electron pathways. For high-capacity anodes like silicon, a flexible AuNP coating acts as a mechanical buffer to prevent pulverization from volume changes, dramatically extending cycle life. They also help form a stable Solid Electrolyte Interphase (SEI) layer, which is critical for battery function.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-16 border-neutral-800">
+
+        <section id="performance" class="mb-20 section bg-black">
+            <h2 class="text-3xl font-bold text-center mb-4">Performance Dashboard</h2>
+            <p class="max-w-3xl mx-auto text-lg text-neutral-300 text-center mb-12">
+                The ultimate goal of material innovation is to improve key performance metrics. This dashboard compares different battery chemistries based on their energy density and specific capacity. Use the dropdown to switch between metrics.
+            </p>
+            <div class="card p-8">
+                <div class="flex justify-end mb-4">
+                    <select id="metricSelector" class="btn btn-secondary" onchange="updatePerformanceChart()">
+                        <option value="energyDensity">Energy Density (Wh/kg)</option>
+                        <option value="specificCapacity">Anode Capacity (mAh/g)</option>
+                    </select>
+                </div>
+                <div class="chart-container h-96">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+                 <div class="mt-8">
+                    <h3 class="text-xl font-bold">Key Takeaways:</h3>
+                    <p id="performance-text" class="text-neutral-400 mt-2"></p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <footer class="bg-black mt-20 border-t border-neutral-800">
+        <div class="container mx-auto px-6 py-8 text-center text-neutral-400">
+            <p>Interactive report generated from source documents on Advanced Battery Materials. This visualization is for educational and analytical purposes.</p>
+        </div>
+        <div class="container mx-auto px-6 py-8 text-center text-neutral-400">
+            <a href="index.html" class="inline-block px-4 py-2 bg-neutral-800 text-white rounded-md hover:bg-neutral-700 transition">Back to Main Site</a>
+        </div>
+    </footer>
+
+
+    <script>
+        const explorerData = {
+            anode: {
+                title: 'Anode: The Negative Electrode',
+                text: 'The anode is critical for storing lithium ions during charging. While graphite is the industry standard, its capacity is limited. Research is focused on high-capacity materials like Tin (Sn) and Silicon (Si). The main challenge is managing the massive volume expansion during lithiation, which can pulverize the electrode. Nanostructuring—creating materials like nanotubes or nanowires—is a key strategy to accommodate this expansion and dramatically improve cycle life.',
+                chart: {
+                    labels: ['Graphite (Conventional)', 'Tin (Sn)', 'SnO₂ Nanotubes'],
+                    data: [372, 994, 940],
+                    label: 'Theoretical Specific Capacity (mAh/g)'
+                }
+            },
+            cathode: {
+                title: 'Cathode: The Positive Electrode',
+                text: 'The cathode determines a battery\'s energy density and voltage. Common materials include layered oxides like NMC and polyanion compounds like Lithium Iron Phosphate ($LiFePO_4$). $LiFePO_4$ is highly valued for its low cost, long cycle life, and safety, despite having a lower energy density than some alternatives. A major challenge is its low electronic conductivity, which is often solved by coating the material with a conductive carbon layer.',
+                chart: {
+                    labels: ['$LiCoO_2$ (Conventional)', '$LiFePO_4$'],
+                    data: [140, 170],
+                    label: 'Theoretical Specific Capacity (mAh/g)'
+                }
+            },
+            electrolyte: {
+                title: 'Electrolyte: The Ion Conductor',
+                text: 'The electrolyte transports ions between the anode and cathode. Conventional liquid electrolytes are effective but pose safety risks due to their flammability. The future lies in Solid-State Electrolytes (SSEs), which are non-flammable and can enable higher energy densities. A major research focus is improving the ionic conductivity of SSEs. Another promising area is Ionic Liquids (ILs), like those based on AlCl₄⁻, which offer high thermal and electrochemical stability.',
+                chart: {
+                    labels: ['Liquid Electrolyte (LiPF₆)', 'Solid Polymer (PEO)', 'Solid Ceramic (LLZO)'],
+                    data: [1e-2, 1e-4, 1e-3],
+                    type: 'logarithmic',
+                    label: 'Ionic Conductivity (S/cm) at Room Temp'
+                }
+            }
+        };
+
+        const performanceData = {
+            energyDensity: {
+                labels: ['Conventional LIBs', 'Solid-State Batteries', 'Lithium-Sulfur'],
+                data: [250, 400, 500],
+                label: 'Energy Density (Wh/kg)',
+                text: 'Next-generation chemistries offer significant improvements in energy density. Lithium-Sulfur batteries show the highest theoretical potential, which is ideal for applications like electric aviation, but they still face challenges with cyclability. Solid-state batteries offer a promising balance of increased density and enhanced safety.'
+            },
+            specificCapacity: {
+                labels: ['Graphite', 'Hard Carbon', 'Silicon (Si)', 'Tin (Sn)'],
+                data: [372, 500, 4200, 994],
+                label: 'Theoretical Anode Specific Capacity (mAh/g)',
+                text: 'The shift away from graphite to high-capacity anode materials is a key driver for increasing battery performance. Silicon (Si) offers the highest theoretical capacity by a large margin, but managing its ~400% volume expansion during cycling remains a major engineering challenge that is being addressed with nanostructuring and multifunctional additives.'
+                }
+            };
+
+            let explorerChart, performanceChart;
+
+            function initCharts() {
+                const explorerCtx = document.getElementById('explorerChart').getContext('2d');
+                explorerChart = new Chart(explorerCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: [],
+                        datasets: [{
+                            label: '',
+                            data: [],
+                            backgroundColor: 'rgba(0, 123, 255, 0.6)',
+                            borderColor: 'rgba(0, 123, 255, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.dataset.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        if (context.parsed.y !== null) {
+                                            label += context.parsed.y;
+                                        }
+                                        return label;
+                                    }
+                                },
+                                titleFont: { family: 'Exo 2' },
+                                bodyFont: { family: 'Exo 2' }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: '',
+                                    color: '#F4F4F4',
+                                    font: { family: 'Exo 2' }
+                                },
+                                ticks: {
+                                    color: '#F4F4F4'
+                                },
+                                grid: {
+                                    color: '#333'
+                                }
+                            },
+                            x: {
+                                ticks: {
+                                    color: '#F4F4F4',
+                                    font: { family: 'Exo 2' },
+                                    autoSkip: false,
+                                    maxRotation: 0,
+                                    minRotation: 0
+                                },
+                                grid: {
+                                    color: '#333'
+                                }
+                            }
+                        }
+                    }
+                });
+
+                const performanceCtx = document.getElementById('performanceChart').getContext('2d');
+                performanceChart = new Chart(performanceCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: [],
+                        datasets: [{
+                            label: '',
+                            data: [],
+                            backgroundColor: [
+                                'rgba(0, 123, 255, 0.6)',
+                                'rgba(34, 197, 94, 0.6)',
+                                'rgba(239, 68, 68, 0.6)',
+                                 'rgba(255, 159, 64, 0.6)'
+                            ],
+                            borderColor: [
+                                'rgba(0, 123, 255, 1)',
+                                'rgba(34, 197, 94, 1)',
+                                'rgba(239, 68, 68, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                         plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                titleFont: { family: 'Exo 2' },
+                                bodyFont: { family: 'Exo 2' }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: '',
+                                    color: '#F4F4F4',
+                                    font: { family: 'Exo 2' }
+                                },
+                                ticks: {
+                                    color: '#F4F4F4'
+                                },
+                                grid: {
+                                    color: '#333'
+                                }
+                            },
+                            x: {
+                                ticks: {
+                                    color: '#F4F4F4',
+                                    font: { family: 'Exo 2' }
+                                },
+                                grid: {
+                                    color: '#333'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            function updateExplorer(component) {
+                const data = explorerData[component];
+                document.getElementById('explorer-title').innerHTML = data.title;
+                document.getElementById('explorer-text').innerText = data.text;
+
+                explorerChart.data.labels = data.chart.labels;
+                explorerChart.data.datasets[0].data = data.chart.data;
+                explorerChart.data.datasets[0].label = data.chart.label;
+                explorerChart.options.scales.y.title.text = data.chart.label;
+                
+                if (data.chart.type === 'logarithmic') {
+                    explorerChart.options.scales.y.type = 'logarithmic';
+                    explorerChart.options.scales.y.beginAtZero = false;
+                } else {
+                    explorerChart.options.scales.y.type = 'linear';
+                    explorerChart.options.scales.y.beginAtZero = true;
+                }
+
+                explorerChart.update();
+
+                document.querySelectorAll('#explorer .btn-secondary').forEach(btn => btn.classList.remove('active'));
+                document.getElementById(`btn-${component}`).classList.add('active');
+            }
+
+            function updatePerformanceChart() {
+                const metric = document.getElementById('metricSelector').value;
+                const data = performanceData[metric];
+
+                performanceChart.data.labels = data.labels;
+                performanceChart.data.datasets[0].data = data.data;
+                performanceChart.data.datasets[0].label = data.label;
+                performanceChart.options.scales.y.title.text = data.label;
+                performanceChart.update();
+                
+                document.getElementById('performance-text').innerText = data.text;
+            }
+        
+            function scrollToSection(sectionId) {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').includes(sectionId)) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            }
+            window.onload = () => {
+                initCharts();
+                updateExplorer('anode');
+                updatePerformanceChart();
+            };
+        </script>
+    </body>
+    </html>
